@@ -1,0 +1,24 @@
+{
+  "productos": [
+    {
+      "id": 1,
+      "nombre": "remera",
+      "marca": "",
+      "categoria": "",
+      "descripcion": "",
+      "precio": 2,
+      "talla": [],
+      "img": "https://d2r9epyceweg5n.cloudfront.net/stores/001/205/102/products/remera-lisa-fr-rj-11-ef4b6ca4b08c3f434315906905869409-640-0.jpg"
+    },
+    {
+      "id": 2,
+      "nombre": "chomba",
+      "marca": "dasdad",
+      "categoria": "dasdasd",
+      "descripcion": "dasdas",
+      "precio": 2,
+      "talla": [],
+      "img": "https://d2r9epyceweg5n.cloudfront.net/stores/001/205/102/products/remera-lisa-fr-rj-11-ef4b6ca4b08c3f434315906905869409-640-0.jpg"
+    }
+  ]
+}
