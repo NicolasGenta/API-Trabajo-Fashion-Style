@@ -19,6 +19,44 @@
       "precio": 2,
       "talla": [],
       "img": "https://d2r9epyceweg5n.cloudfront.net/stores/001/205/102/products/remera-lisa-fr-rj-11-ef4b6ca4b08c3f434315906905869409-640-0.jpg"
+    },
+    {
+      "id": 3,
+      "nombre": "camisa",
+      "marca": "Valentino",
+      "categoria": "Femenino",
+      "descripcion": "",
+      "precio": 2500,
+      "talla": [
+        "L",
+        "M",
+        "XL"
+      ],
+      "img": "https://d2r9epyceweg5n.cloudfront.net/stores/001/205/102/products/remera-lisa-fr-rj-11-ef4b6ca4b08c3f434315906905869409-640-0.jpg"
+    },
+    {
+      "id": 4,
+      "nombre": "Pantalon",
+      "marca": "Valentino",
+      "categoria": "Femenino",
+      "precio": 2500,
+      "talla": [
+        "L",
+        "M",
+        "XL"
+      ]
+    },
+    {
+      "id": 5,
+      "nombre": "Pantalon",
+      "marca": "Valentino",
+      "categoria": "Femenino",
+      "precio": 2500,
+      "talla": [
+        "L",
+        "M",
+        "XL"
+      ]
     }
   ]
 }
