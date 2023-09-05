@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../css/index.css">
+    <link rel="stylesheet" type="text/css" href="./documentation.css">
+    <link rel="icon" href="../..//images/logo.svg"/>
+    <title>Documentación</title>
+</head>
+<body>
+    <header>
+        <a href="../../../index.html">
+            <img src="../../images/logo.svg" alt="">
+        </a>
+        <ul>
+            <li>
+                <a href="./docs.html">Docs</a>
+            </li>
+            <li>
+                <a href="../about-section/about.html">About</a>
+            </li>
+        </ul>
+    </header>
+    <main>
+        <h1>Documentación de la API</h1>
+        <section>
+            <h3>Introducción</h3>
+            <p>Esta API proporciona acceso a una colección de recursos y permite realizar operaciones básicas de lectura y escritura. Los métodos admitidos son GET para recuperar recursos, GET by ID para obtener un recurso específico y POST para crear nuevos recursos.</p>
+        </section>
+        <section>
+            <h3>Base URL</h3>
+            <h4>"http://localhost:3000/productos"</h4>
+        </section>
+        <section>
+            <h3>Enpoint: Productos</h3>
+            <div>
+                <h4>GET</h4>
+                <img src="../../images/documentation/GET.png" alt="imagen url base">
+                <h5>Ejemplo de respuesta</h5>
+                <p>GET "http://localhost:3000/productos/"</p>
+                <img src="../../images/documentation/response_get.png" alt="imagen url base">
+            </div>
+            <div>
+                <h4>GET by ID</h4>
+                <img src="../../images/documentation/getById.png" alt="imagen url base">
+                <h5>Ejemplo de respuesta</h5>
+                <p><span>GET</span> "http://localhost:3000/productos/1"</p>
+                <img src="../../images/documentation/response_get_by_id.png" alt="imagen url base">
+            </div>
+            <div>
+                <h4>POST</h4>
+                <img src="../../images/documentation/POST.png" alt="imagen url base">
+                <h5>Ejemplo de respuesta</h5>
+                <img src="../../images/documentation/response_post.png" alt="imagen url base">
+            </div>
+        </section>
+    </main>
+</body>
+</html>

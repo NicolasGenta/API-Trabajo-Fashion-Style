@@ -2,83 +2,83 @@
   "productos": [
     {
       "id": 1,
-      "nombre": "remera",
-      "marca": "mistral",
-      "categoria": "masculino",
+      "nombre": "Essnce Jersey corto unicolor tejido de canalé",
+      "marca": "Essnce",
+      "categoria": "Femenino",
       "descripcion": "remera azul",
       "precio": 7000,
-      "talla": [],
-      "img": "https://d2r9epyceweg5n.cloudfront.net/stores/001/205/102/products/remera-lisa-fr-rj-11-ef4b6ca4b08c3f434315906905869409-640-0.jpg"
+      "talla": ["XS", "S", "L", "M"],
+      "img": "https://img.ltwebstatic.com/images3_pi/2020/08/14/15973735644f1101806bbc2e0d1f77a7c01f597384_thumbnail_600x.webp"
     },
     {
       "id": 2,
-      "nombre": "chomba",
-      "marca": "adidas",
-      "categoria": "masculino",
+      "nombre": "LUNE Sudadera con estampado de letra con forro",
+      "marca": "LUNE",
+      "categoria": "Femenino",
       "descripcion": "chomba gris",
       "precio": 8000,
-      "talla": [],
-      "img": "https://www.hardconditions.com/img/articulos/2020/12/chomba_micro_pique_thumb1.jpg"
+      "talla": ["XS", "S", "L", "M"],
+      "img": "https://img.ltwebstatic.com/images3_pi/2023/07/18/16896441460352109edf60d31c06682784c20608b2_thumbnail_600x.webp"
     },
     {
       "id": 3,
-      "nombre": "remera",
-      "marca": "adidas",
-      "categoria": "femenino",
+      "nombre": "Manfinity EMRG Hombres Camiseta con estampado",
+      "marca": "Manfinity EMRG",
+      "categoria": "Masculino",
       "descripcion": "remera blanca",
       "precio": 1800,
-      "talla": [],
-      "img": "https://http2.mlstatic.com/D_NQ_NP_673340-MLA53096498132_122022-O.webp"
+      "talla": ["XS", "S", "L", "M", "XL", "XXL"],
+      "img": "https://img.ltwebstatic.com/images3_pi/2023/04/06/1680759342e8849d12586ae3e69d3f548b3deabee5_thumbnail_600x.webp"
     },
     {
       "id": 4,
-      "nombre": "short gimnacio",
-      "marca": "adidas",
-      "categoria": "masculino",
+      "nombre": "Manfinity Homme Hombres Capucha japonés carácter & con estampado de onda",
+      "marca": "Manfinity",
+      "categoria": "Masculino",
       "descripcion": "short negro",
       "precio": 10000,
-      "talla": [],
-      "img": "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/74862586487e4401acafaca70116fe4e_9366/Shorts_Run_It_Negro_GQ9319_01_laydown.jpg"
+      "talla": ["XS", "S", "L", "M", "XL", "XXL"],
+      "img": "https://img.ltwebstatic.com/images3_pi/2022/08/25/1661394095cc055ccf2d15e73b0394a6c595649835_thumbnail_600x.webp"
     },
     {
       "id": 5,
-      "nombre": "short pileta",
-      "marca": "adidas",
-      "categoria": "femenina",
-      "descripcion": "short blanco",
-      "precio": 11000,
+      "nombre": "Gafas de sol para playa día festivo",
+      "marca": "LDMF",
+      "categoria": "Accesorios",
+      "descripcion": "3 piezas de plástico Marco helado de colores fiesta adorno moda",
+      "precio": 5000,
       "talla": [],
-      "img": "data:image/jpeg;base64,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"
+      "img": "https://img.ltwebstatic.com/images3_spmp/2023/07/07/16887064290c000f063486a524b3e0a6534aa4b7c9_thumbnail_600x.webp"
     },
     {
       "id": 6,
-      "nombre": "pantalon gimnacia",
-      "marca": "sporty",
-      "categoria": "femenina",
-      "descripcion": "pantalon blanca",
-      "precio": 5000,
+      "nombre": "Gorra de béisbol lisa bordada con letras",
+      "marca": "LM",
+      "categoria": "Accesorios",
+      "descripcion": "minimalista, bonita, cómoda y transpirable, 2 piezas",
+      "precio": 25000,
       "talla": [],
-      "img": "https://http2.mlstatic.com/D_NQ_NP_771264-MLA51634406285_092022-O.webp"
+      "img": "https://img.ltwebstatic.com/images3_pi/2023/03/02/16777205411b7bc548c0565d2aa9164a242cbf691f_thumbnail_600x.webp"
     },
     {
       "id": 7,
-      "nombre": "pantalon de vestir",
-      "marca": "columbia",
-      "categoria": "masculino",
+      "nombre": "Conjuntos de Niños (3-7)",
+      "marca": "Columbia",
+      "categoria": "Niños",
       "descripcion": "pantalon bordo",
-      "precio": 2000,
-      "talla": [],
-      "img": "https://d3ugyf2ht6aenh.cloudfront.net/stores/313/481/products/chinobordo21-428d4496c17c6a958116254970640148-640-0.jpg"
+      "precio": 10000,
+      "talla": ["XS", "S", "L", "M"],
+      "img": "https://img.ltwebstatic.com/images3_pi/2023/08/25/a3/16929695463efabb7823e9e9b2998c89f97f04d3d2_thumbnail_600x.webp"
     },
     {
       "id": 8,
-      "nombre": "pantalos de shoggin",
-      "marca": "moster",
-      "categoria": "masculino",
+      "nombre": "Kids EVRYDAY Niños Pantalones deportivos con sudadera con estampado",
+      "marca": "EVRYDAY",
+      "categoria": "Niños",
       "descripcion": "pantalon gris",
       "precio": 21000,
-      "talla": [],
-      "img": "https://do2padres.com/cdn/shop/files/DSC3755_500x.jpg?v=1689006897"
+      "talla": ["XS", "S", "L", "M"],
+      "img": "https://img.ltwebstatic.com/images3_pi/2022/09/28/166436653304cc465805bb5d2cd19720e8b17d8c81_thumbnail_600x.webp"
     },
     {
       "id": 9,
