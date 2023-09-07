@@ -1,15 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { Producto } from './producto.interface';
+import { producDto } from './producto.dto';
 
 const BASE_URL = "http://localhost:3030/productos/";
 
 @Injectable()
 export class ProductoService {
-    async crearProducto(body) {
+    async crearProducto(producDto: producDto) {
         try {
-            if (Object.keys(body).length > 1) {
+            if (Object.keys(producDto).length > 1) {
                 const id = await this.setId();
-                const { nombre, marca, categoria, descripcion, precio, talla, img } = body;
+                const { nombre, marca, categoria, descripcion, precio, talla, img } = producDto;
                 const nuevoProducto = { id, nombre, marca, categoria, descripcion, precio, talla, img };
                 const res = await fetch(BASE_URL, {
                     method: "POST",

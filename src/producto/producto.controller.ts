@@ -1,7 +1,8 @@
 import { Controller, Get, Param, Post, Body, HttpCode, Res, HttpStatus } from '@nestjs/common';
 import { ProductoService } from './producto.service';
 import { Producto } from './producto.interface';
-import { response } from 'express';
+import { producDto } from './producto.dto';
+
 
 @Controller('/productos')
 export class ProductoController {
@@ -32,9 +33,10 @@ export class ProductoController {
     }
     
     @Post()
-    async crearProducto(@Res() response, @Body() body): Promise<Producto> {
+    async crearProducto(@Res() response, @Body() producDto: producDto): Promise<Producto> {
+        console.log(producDto)
         try {
-            const responseFromService = await this.productoService.crearProducto(body);
+            const responseFromService = await this.productoService.crearProducto(producDto);
             if (Object.keys(responseFromService).length) {
                 return response.status(HttpStatus.CREATED).json({ message: 'El recurso ha sido creado con éxito' });
             }
