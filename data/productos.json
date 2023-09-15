@@ -7,7 +7,12 @@
       "categoria": "Femenino",
       "descripcion": "remera azul",
       "precio": 7000,
-      "talla": ["XS", "S", "L", "M"],
+      "talla": [
+        "XS",
+        "S",
+        "L",
+        "M"
+      ],
       "img": "https://img.ltwebstatic.com/images3_pi/2020/08/14/15973735644f1101806bbc2e0d1f77a7c01f597384_thumbnail_600x.webp"
     },
     {
@@ -17,7 +22,12 @@
       "categoria": "Femenino",
       "descripcion": "chomba gris",
       "precio": 8000,
-      "talla": ["XS", "S", "L", "M"],
+      "talla": [
+        "XS",
+        "S",
+        "L",
+        "M"
+      ],
       "img": "https://img.ltwebstatic.com/images3_pi/2023/07/18/16896441460352109edf60d31c06682784c20608b2_thumbnail_600x.webp"
     },
     {
@@ -27,7 +37,14 @@
       "categoria": "Masculino",
       "descripcion": "remera blanca",
       "precio": 1800,
-      "talla": ["XS", "S", "L", "M", "XL", "XXL"],
+      "talla": [
+        "XS",
+        "S",
+        "L",
+        "M",
+        "XL",
+        "XXL"
+      ],
       "img": "https://img.ltwebstatic.com/images3_pi/2023/04/06/1680759342e8849d12586ae3e69d3f548b3deabee5_thumbnail_600x.webp"
     },
     {
@@ -37,7 +54,14 @@
       "categoria": "Masculino",
       "descripcion": "short negro",
       "precio": 10000,
-      "talla": ["XS", "S", "L", "M", "XL", "XXL"],
+      "talla": [
+        "XS",
+        "S",
+        "L",
+        "M",
+        "XL",
+        "XXL"
+      ],
       "img": "https://img.ltwebstatic.com/images3_pi/2022/08/25/1661394095cc055ccf2d15e73b0394a6c595649835_thumbnail_600x.webp"
     },
     {
@@ -67,7 +91,12 @@
       "categoria": "Niños",
       "descripcion": "pantalon bordo",
       "precio": 10000,
-      "talla": ["XS", "S", "L", "M"],
+      "talla": [
+        "XS",
+        "S",
+        "L",
+        "M"
+      ],
       "img": "https://img.ltwebstatic.com/images3_pi/2023/08/25/a3/16929695463efabb7823e9e9b2998c89f97f04d3d2_thumbnail_600x.webp"
     },
     {
@@ -77,7 +106,12 @@
       "categoria": "Niños",
       "descripcion": "pantalon gris",
       "precio": 21000,
-      "talla": ["XS", "S", "L", "M"],
+      "talla": [
+        "XS",
+        "S",
+        "L",
+        "M"
+      ],
       "img": "https://img.ltwebstatic.com/images3_pi/2022/09/28/166436653304cc465805bb5d2cd19720e8b17d8c81_thumbnail_600x.webp"
     },
     {
@@ -99,6 +133,33 @@
       "precio": 50000,
       "talla": [],
       "img": "https://d2r9epyceweg5n.cloudfront.net/stores/001/719/894/products/remera_lisa_amarilla1-ad7aabde36568fbb6316249901780168-640-0.png"
+    },
+    {
+      "id": 11,
+      "nombre": "Gafas de sol",
+      "marca": "LDMF",
+      "categoria": "Accesorios",
+      "descripcion": "3 piezas de plástico Marco helado de colores fiesta adorno moda",
+      "precio": 8000,
+      "talla": [
+        "L",
+        "M",
+        "XL"
+      ],
+      "img": "https://img.ltwebstatic.com/images3_spmp/2023/07/07/16887064290c000f063486a524b3e0a6534aa4b7c9_thumbnail_600x.webp"
+    },
+    {
+      "id": 12,
+      "nombre": "Gafas de sol",
+      "marca": "LDMF",
+      "categoria": "Accesorios",
+      "descripcion": "3 piezas de plástico Marco helado de colores fiesta adorno moda",
+      "precio": 8000,
+      "talla": [
+        "M",
+        "L"
+      ],
+      "img": "https://img.ltwebstatic.com/images3_spmp/2023/07/07/16887064290c000f063486a524b3e0a6534aa4b7c9_thumbnail_600x.webp"
     }
   ]
 }
