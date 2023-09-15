@@ -1,15 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { Producto } from './producto.interface';
+import { producDto } from './producto.dto';
 
 const BASE_URL = "http://localhost:3030/productos/";
 
 @Injectable()
 export class ProductoService {
-    async crearProducto(body) {
+    async crearProducto(producDto: producDto) {
         try {
-            if (Object.keys(body).length > 1) {
+            if (Object.keys(producDto).length > 1) {
                 const id = await this.setId();
-                const { nombre, marca, categoria, descripcion, precio, talla, img } = body;
+                const { nombre, marca, categoria, descripcion, precio, talla, img } = producDto;
                 const nuevoProducto = { id, nombre, marca, categoria, descripcion, precio, talla, img };
                 const res = await fetch(BASE_URL, {
                     method: "POST",
@@ -59,4 +60,27 @@ export class ProductoService {
             throw new Error(`Error al obtener los datos: ${err.status} - ${err.statusText}`);
         }
     }
-}
+   async deleteProductos(id:number){
+    const res = await fetch(BASE_URL + id,{
+        method: 'DELETE',
+      });
+      const parsed = await res.json();
+      return parsed;
+
+   } 
+   async putProductos(id:number,body:producDto): Promise<void>{
+    const isProduct = await this.getProductoById(id);
+    if(!Object.keys(isProduct).length)return;
+    const updateProduct = {
+        ...body,id
+    }
+    const res = await fetch(BASE_URL + id,{
+        method : 'PUT',
+       
+        headers : {
+            'Content-Type': 'application/json'},
+        body : JSON.stringify(updateProduct),
+    })
+    }
+   }
+

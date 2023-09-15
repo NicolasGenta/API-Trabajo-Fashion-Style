@@ -62,27 +62,25 @@
         "XL",
         "XXL"
       ],
+      "talla": [
+        "XS",
+        "S",
+        "L",
+        "M",
+        "XL",
+        "XXL"
+      ],
       "img": "https://img.ltwebstatic.com/images3_pi/2022/08/25/1661394095cc055ccf2d15e73b0394a6c595649835_thumbnail_600x.webp"
     },
     {
-      "id": 5,
-      "nombre": "Gafas de sol para playa día festivo",
-      "marca": "LDMF",
-      "categoria": "Accesorios",
-      "descripcion": "3 piezas de plástico Marco helado de colores fiesta adorno moda",
-      "precio": 5000,
+      "nombre": "true",
+      "marca": "adidas",
+      "categoria": "masculina",
+      "descripcion": "malla",
+      "precio": 50,
       "talla": [],
-      "img": "https://img.ltwebstatic.com/images3_spmp/2023/07/07/16887064290c000f063486a524b3e0a6534aa4b7c9_thumbnail_600x.webp"
-    },
-    {
-      "id": 6,
-      "nombre": "Gorra de béisbol lisa bordada con letras",
-      "marca": "LM",
-      "categoria": "Accesorios",
-      "descripcion": "minimalista, bonita, cómoda y transpirable, 2 piezas",
-      "precio": 25000,
-      "talla": [],
-      "img": "https://img.ltwebstatic.com/images3_pi/2023/03/02/16777205411b7bc548c0565d2aa9164a242cbf691f_thumbnail_600x.webp"
+      "img": "https://d2r9epyceweg5n.cloudfront.net/stores/001/719/894/products/remera_lisa_amarilla1-ad7aabde36568fbb6316249901780168-640-0.png",
+      "id": 6
     },
     {
       "id": 7,
@@ -91,6 +89,12 @@
       "categoria": "Niños",
       "descripcion": "pantalon bordo",
       "precio": 10000,
+      "talla": [
+        "XS",
+        "S",
+        "L",
+        "M"
+      ],
       "talla": [
         "XS",
         "S",
@@ -106,6 +110,12 @@
       "categoria": "Niños",
       "descripcion": "pantalon gris",
       "precio": 21000,
+      "talla": [
+        "XS",
+        "S",
+        "L",
+        "M"
+      ],
       "talla": [
         "XS",
         "S",
@@ -160,6 +170,26 @@
         "L"
       ],
       "img": "https://img.ltwebstatic.com/images3_spmp/2023/07/07/16887064290c000f063486a524b3e0a6534aa4b7c9_thumbnail_600x.webp"
+    },
+    {
+      "id": 11,
+      "nombre": "remera ",
+      "marca": "nike",
+      "categoria": "femenina",
+      "descripcion": "remera azul",
+      "precio": 50000,
+      "talla": [],
+      "img": "https://d2r9epyceweg5n.cloudfront.net/stores/001/719/894/products/remera_lisa_amarilla1-ad7aabde36568fbb6316249901780168-640-0.png"
+    },
+    {
+      "id": 12,
+      "nombre": "true",
+      "marca": "nike",
+      "categoria": "femenina",
+      "descripcion": "remera azul",
+      "precio": 50000,
+      "talla": [],
+      "img": "https://d2r9epyceweg5n.cloudfront.net/stores/001/719/894/products/remera_lisa_amarilla1-ad7aabde36568fbb6316249901780168-640-0.png"
     }
   ]
 }

@@ -1,7 +1,9 @@
-import { Controller, Get, Param, Post, Body, HttpCode, Res, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, HttpCode, Res, HttpStatus, Delete, Put } from '@nestjs/common';
 import { ProductoService } from './producto.service';
 import { Producto } from './producto.interface';
-import { response } from 'express';
+import { producDto } from './producto.dto';
+import { Response } from 'express';
+
 
 @Controller('/productos')
 export class ProductoController {
@@ -32,9 +34,10 @@ export class ProductoController {
     }
     
     @Post()
-    async crearProducto(@Res() response, @Body() body): Promise<Producto> {
+    async crearProducto(@Res() response, @Body() producDto: producDto): Promise<Producto> {
+        console.log(producDto)
         try {
-            const responseFromService = await this.productoService.crearProducto(body);
+            const responseFromService = await this.productoService.crearProducto(producDto);
             if (Object.keys(responseFromService).length) {
                 return response.status(HttpStatus.CREATED).json({ message: 'El recurso ha sido creado con éxito' });
             }
@@ -42,4 +45,30 @@ export class ProductoController {
             return response.status(HttpStatus.BAD_REQUEST).json({ message: 'El recurso no pudo ser creado' });
         }
     }
+    
+    @Delete('/:id')
+    async deleteProductos(@Param('id') id: number, @Res() res: Response): Promise<void> {
+        try {
+            await this.productoService.deleteProductos(id);
+            res.status(200).json({ message: 'Producto eliminado correctamente' });
+        } catch (error) {
+
+            res.status(404).json({ error: 'Producto no encontrado' });
+        }
+    }
+   
+
+     @Put('/:id')
+       async putProductos(@Param('id') id: number, @Body() body, @Res() res: Response): Promise<void> {
+       try {
+     
+        await this.productoService.putProductos(id, body);
+
+        res.status(200).json({ message: 'Producto modificado correctamente' });
+        } catch (error) {
+  
+        res.status(400).json({ error: 'No se pudo modificar el producto' });
+    }
+}
+
 }
