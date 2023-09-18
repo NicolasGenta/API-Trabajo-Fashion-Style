@@ -17,7 +17,7 @@ export class ProductoController {
                 return response.status(HttpStatus.OK).json(responseFromService);
             }
         } catch (error) {
-            return response.status(HttpStatus.NOT_FOUND).json({ message: "Products not found" });
+            return response.status(HttpStatus.NOT_FOUND).json({ error: "Products not found" });
         }
     }
 
@@ -29,7 +29,7 @@ export class ProductoController {
                 return response.status(HttpStatus.OK).json(resposeFromService);
             }
         } catch (err) {
-            return response.status(HttpStatus.NOT_FOUND).json({ message: "Product not found" });
+            return response.status(HttpStatus.NOT_FOUND).json({ error: "Product not found" });
         }
     }
     
@@ -42,7 +42,7 @@ export class ProductoController {
                 return response.status(HttpStatus.CREATED).json({ message: 'El recurso ha sido creado con éxito' });
             }
         } catch (error) {
-            return response.status(HttpStatus.BAD_REQUEST).json({ message: 'El recurso no pudo ser creado' });
+            return response.status(HttpStatus.BAD_REQUEST).json({ error: 'El recurso no pudo ser creado' });
         }
     }
     
@@ -50,25 +50,19 @@ export class ProductoController {
     async deleteProductos(@Param('id') id: number, @Res() res: Response): Promise<void> {
         try {
             await this.productoService.deleteProductos(id);
-            res.status(200).json({ message: 'Producto eliminado correctamente' });
+            res.status(HttpStatus.OK).json({ message: 'Producto eliminado correctamente' });
         } catch (error) {
-
-            res.status(404).json({ error: 'Producto no encontrado' });
+            res.status(HttpStatus.NOT_FOUND).json({ error: 'Producto no encontrado' });
         }
     }
-   
 
-     @Put('/:id')
-       async putProductos(@Param('id') id: number, @Body() body, @Res() res: Response): Promise<void> {
-       try {
-     
-        await this.productoService.putProductos(id, body);
-
-        res.status(200).json({ message: 'Producto modificado correctamente' });
+    @Put('/:id')
+    async putProductos(@Param('id') id: number, @Body() body, @Res() res: Response): Promise<void> {
+        try {
+            await this.productoService.putProductos(id, body);
+            res.status(HttpStatus.OK).json({ message: 'Producto modificado correctamente' });
         } catch (error) {
-  
-        res.status(400).json({ error: 'No se pudo modificar el producto' });
+            res.status(HttpStatus.BAD_REQUEST).json({ error: 'No se pudo modificar el producto' });
     }
 }
-
 }

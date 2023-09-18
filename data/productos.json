@@ -62,25 +62,27 @@
         "XL",
         "XXL"
       ],
-      "talla": [
-        "XS",
-        "S",
-        "L",
-        "M",
-        "XL",
-        "XXL"
-      ],
       "img": "https://img.ltwebstatic.com/images3_pi/2022/08/25/1661394095cc055ccf2d15e73b0394a6c595649835_thumbnail_600x.webp"
     },
     {
-      "nombre": "true",
-      "marca": "adidas",
-      "categoria": "masculina",
-      "descripcion": "malla",
-      "precio": 50,
+      "id": 5,
+      "nombre": "Diadema de estilo azul dulce con estampado Floral Ditsy para mujer",
+      "marca": "Ditsy",
+      "categoria": "Accesorios",
+      "descripcion": "decoración de perlas de imitación",
+      "precio": 3500,
       "talla": [],
-      "img": "https://d2r9epyceweg5n.cloudfront.net/stores/001/719/894/products/remera_lisa_amarilla1-ad7aabde36568fbb6316249901780168-640-0.png",
-      "id": 6
+      "img": "https://img.ltwebstatic.com/images3_spmp/2023/04/20/16819778450445bfe077936a4cc600e700af116907.jpg"
+    },
+    {
+      "id": 6,
+      "nombre": "Gafas de sol para playa día festivo",
+      "marca": "Manfinity",
+      "categoria": "Accesorios",
+      "descripcion": "3 piezas de plástico Marco helado de colores fiesta adorno moda",
+      "precio": 5000,
+      "talla": [],
+      "img": "https://img.ltwebstatic.com/images3_spmp/2023/07/07/1688706429322eed5e96a5005b58364cb27ebef815_thumbnail_600x.webp"
     },
     {
       "id": 7,
@@ -89,12 +91,6 @@
       "categoria": "Niños",
       "descripcion": "pantalon bordo",
       "precio": 10000,
-      "talla": [
-        "XS",
-        "S",
-        "L",
-        "M"
-      ],
       "talla": [
         "XS",
         "S",
@@ -116,80 +112,57 @@
         "L",
         "M"
       ],
-      "talla": [
-        "XS",
-        "S",
-        "L",
-        "M"
-      ],
       "img": "https://img.ltwebstatic.com/images3_pi/2022/09/28/166436653304cc465805bb5d2cd19720e8b17d8c81_thumbnail_600x.webp"
     },
     {
       "id": 9,
-      "nombre": "pantalon shoggin ",
-      "marca": "aventure",
-      "categoria": "femenina",
-      "descripcion": "pantalon verde",
-      "precio": 2500,
-      "talla": [],
-      "img": "https://http2.mlstatic.com/D_NQ_NP_759743-MLA49274221244_032022-O.webp"
+      "nombre": "Manfinity EMRG Hombres Cazadora",
+      "marca": "Manfinity",
+      "categoria": "Masculino",
+      "descripcion": " estampado de slogan sin capucha",
+      "precio": 25000,
+      "talla": [
+        "XL",
+        "XXL",
+        "L",
+        "M"
+      ],
+      "img": "https://img.ltwebstatic.com/images3_pi/2023/04/03/1680510084408eaf9e85d3dce3749a5bc331549185_thumbnail_600x.webp"
     },
     {
       "id": 10,
-      "nombre": "remera de vestir",
-      "marca": "nike",
-      "categoria": "femenina",
-      "descripcion": "remera amarilla",
+      "nombre": "Manfinity Sporsity Hombres Cazadora de universidad ",
+      "marca": "Sporsity",
+      "categoria": "Masculino",
+      "descripcion": "Cazadora de universidad con estampado de letra de color combinado sin capucha",
       "precio": 50000,
-      "talla": [],
-      "img": "https://d2r9epyceweg5n.cloudfront.net/stores/001/719/894/products/remera_lisa_amarilla1-ad7aabde36568fbb6316249901780168-640-0.png"
-    },
-    {
-      "id": 11,
-      "nombre": "Gafas de sol",
-      "marca": "LDMF",
-      "categoria": "Accesorios",
-      "descripcion": "3 piezas de plástico Marco helado de colores fiesta adorno moda",
-      "precio": 8000,
       "talla": [
+        "XL",
+        "XXL",
         "L",
-        "M",
-        "XL"
+        "M"
       ],
-      "img": "https://img.ltwebstatic.com/images3_spmp/2023/07/07/16887064290c000f063486a524b3e0a6534aa4b7c9_thumbnail_600x.webp"
-    },
-    {
-      "id": 12,
-      "nombre": "Gafas de sol",
-      "marca": "LDMF",
-      "categoria": "Accesorios",
-      "descripcion": "3 piezas de plástico Marco helado de colores fiesta adorno moda",
-      "precio": 8000,
-      "talla": [
-        "M",
-        "L"
-      ],
-      "img": "https://img.ltwebstatic.com/images3_spmp/2023/07/07/16887064290c000f063486a524b3e0a6534aa4b7c9_thumbnail_600x.webp"
+      "img": "https://img.ltwebstatic.com/images3_pi/2023/01/29/16749856630450dd49e0d2790f4ea5be904d9843a2_thumbnail_600x.webp"
     },
     {
       "id": 11,
-      "nombre": "remera ",
-      "marca": "nike",
-      "categoria": "femenina",
-      "descripcion": "remera azul",
-      "precio": 50000,
+      "nombre": "3 piezas Collar con diseño playero",
+      "marca": "LDMF",
+      "categoria": "Accesorios",
+      "descripcion": "Collar con diseño playero",
+      "precio": 3000,
       "talla": [],
-      "img": "https://d2r9epyceweg5n.cloudfront.net/stores/001/719/894/products/remera_lisa_amarilla1-ad7aabde36568fbb6316249901780168-640-0.png"
+      "img": "https://img.ltwebstatic.com/images3_pi/2022/03/04/16463801071500c4d404d02d67cf13ecb4d0ea073f_thumbnail_600x.webp"
     },
     {
       "id": 12,
-      "nombre": "true",
-      "marca": "nike",
-      "categoria": "femenina",
-      "descripcion": "remera azul",
-      "precio": 50000,
+      "nombre": "Pendientes largos flor",
+      "marca": "AMG",
+      "categoria": "Accesorios",
+      "descripcion": "De acero inoxidable con cuenta flor para mujeres para decoración diaria",
+      "precio": 2000,
       "talla": [],
-      "img": "https://d2r9epyceweg5n.cloudfront.net/stores/001/719/894/products/remera_lisa_amarilla1-ad7aabde36568fbb6316249901780168-640-0.png"
+      "img": "https://img.ltwebstatic.com/images3_spmp/2023/05/31/16854624445888ddea65b4b83db09a00cd8163ec90_thumbnail_600x.webp"
     }
   ]
 }

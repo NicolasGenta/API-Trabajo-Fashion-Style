@@ -60,27 +60,35 @@ export class ProductoService {
             throw new Error(`Error al obtener los datos: ${err.status} - ${err.statusText}`);
         }
     }
-   async deleteProductos(id:number){
-    const res = await fetch(BASE_URL + id,{
-        method: 'DELETE',
-      });
-      const parsed = await res.json();
-      return parsed;
 
-   } 
-   async putProductos(id:number,body:producDto): Promise<void>{
-    const isProduct = await this.getProductoById(id);
-    if(!Object.keys(isProduct).length)return;
-    const updateProduct = {
-        ...body,id
+    async deleteProductos(id:number){
+        try{
+            const res = await fetch(BASE_URL + id,{
+                method: 'DELETE',
+            });
+            if(res.ok){
+                const parsed = await res.json();
+                return parsed;
+            }else {
+                throw new Error ('Producto no encontrado');
+            }
+        }catch (err) {
+            throw new Error ('No se ha podido eliminar recurso');
+        }
+    } 
+
+    async putProductos(id:number,body:producDto): Promise<void>{
+        const isProduct = await this.getProductoById(id);
+        if(!Object.keys(isProduct).length)return;
+        const updateProduct = {
+            ...body,id
+        }
+        const res = await fetch(BASE_URL + id,{
+            method : 'PUT',
+            headers : {
+                'Content-Type': 'application/json'},
+            body : JSON.stringify(updateProduct),
+        })
+        }
     }
-    const res = await fetch(BASE_URL + id,{
-        method : 'PUT',
-       
-        headers : {
-            'Content-Type': 'application/json'},
-        body : JSON.stringify(updateProduct),
-    })
-    }
-   }
 

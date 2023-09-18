@@ -7,57 +7,70 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../../css/index.css">
+    <link rel="stylesheet" type="text/css" href="../about-section/about.css">
     <link rel="stylesheet" type="text/css" href="./documentation.css">
-    <link rel="icon" href="../..//images/logo.svg"/>
+    <link rel="icon" href="../../images/logo.svg"/>
     <title>Documentación</title>
 </head>
 <body>
-    <header>
-        <a href="../../../index.html">
-            <img src="../../images/logo.svg" alt="">
-        </a>
-        <ul>
-            <li>
-                <a href="./docs.html">Docs</a>
-            </li>
-            <li>
-                <a href="../about-section/about.html">About</a>
-            </li>
-        </ul>
-    </header>
     <main>
         <h1>Documentación de la API</h1>
         <section>
             <h3>Introducción</h3>
-            <p>Esta API proporciona acceso a una colección de recursos y permite realizar operaciones básicas de lectura y escritura. Los métodos admitidos son GET para recuperar recursos, GET by ID para obtener un recurso específico y POST para crear nuevos recursos.</p>
+            <p>Esta API proporciona acceso a una colección de recursos y permite realizar operaciones básicas de lectura y escritura. Los métodos admitidos son GET para recuperar recursos, GET by ID para obtener un recurso específico, POST para crear nuevos recursos, PUT para modificación de recursos y DELETE para eleiminar un recurso especifico.</p>
         </section>
         <section>
             <h3>Base URL</h3>
             <h4>"http://localhost:3000/productos"</h4>
         </section>
-        <section>
-            <h3>Enpoint: Productos</h3>
-            <div>
-                <h4>GET</h4>
-                <img src="../../images/documentation/GET.png" alt="imagen url base">
-                <h5>Ejemplo de respuesta</h5>
-                <p>GET "http://localhost:3000/productos/"</p>
-                <img src="../../images/documentation/response_get.png" alt="imagen url base">
-            </div>
-            <div>
-                <h4>GET by ID</h4>
-                <img src="../../images/documentation/getById.png" alt="imagen url base">
-                <h5>Ejemplo de respuesta</h5>
-                <p><span>GET</span> "http://localhost:3000/productos/1"</p>
-                <img src="../../images/documentation/response_get_by_id.png" alt="imagen url base">
-            </div>
-            <div>
-                <h4>POST</h4>
-                <img src="../../images/documentation/POST.png" alt="imagen url base">
-                <h5>Ejemplo de respuesta</h5>
-                <img src="../../images/documentation/response_post.png" alt="imagen url base">
-            </div>
-        </section>
+        <ul class="instructions_list">
+            <li class="box-shadow">
+                <h4 class="collapse-button">GET</h4>
+                <div class="collapse-content hidden">
+                    <p>Para obtener todos los recursos de este endpoint se debe realizar la siguiente petición:</p>
+                    <img src="../../images/documentation/GET.png" alt="imagen url base">
+                    <p>La API enviará una respuesta en formato JSON parecida a la siguiente: </p>
+                    <img src="../../images/documentation/response_get.png" alt="imagen url base">
+                </div>
+            </li>
+            <li class="box-shadow">
+                <h4 class="collapse-button">GET BY ID</h4>
+                <div class="collapse-content hidden">
+                    <p>Para obtener un recurso en particular se debe relizar la siguiente petición, enviandole como parametro el <span>id</span> del recurso a obtener</p>
+                    <img src="../../images/documentation/getById.png" alt="imagen url base">
+                    <p>La API enviará una respuesta en formato JSON parecida a la siguiente, si el recurso fuese encontrado, de lo contrario retornará un status 404: </p>
+                    <img src="../../images/documentation/response_get_by_id.png" alt="imagen url base">
+                </div>
+            </li>
+            <li class="box-shadow">
+                <h4 class="collapse-button">POST</h4>
+                <div class="collapse-content hidden">
+                    <p>Para crear un recurso en la base de datos se debe relizar la siguiente petición, enviandole <span>un objeto en formato JSON</span> con los atributos y valores del recurso a crear</p>
+                    <img src="../../images/documentation/POST.png" alt="imagen url base">
+                    <p>Si el tipado del objeto enviado, es correcto, la API devolverá un status <span>201 - created</span>, de lo contrario no creará el recurso</p>
+                    <img src="../../images/documentation/response_post.png" alt="imagen url base">
+                </div>
+            </li>
+            <li class="box-shadow">
+                <h4 class="collapse-button">DELETE</h4>
+                <div class="collapse-content hidden">
+                    <p>Para eliminar un recurso en particular de la base de datos se debe relizar la siguiente petición, enviandole como parametro el <span>id</span> del recurso a eliminar </p>
+                    <img src="../../images/documentation/delete.png" alt="imagen url base">
+                    <p>Si el recurso existe, la API eliminará el recurso, de lo contrario devolverá un status <span>404 - Not found</span></p>
+                    <img src="../../images/documentation/delete_response.png" alt="imagen url base">
+                </div>
+            </li>
+            <li class="box-shadow">
+                <h4 class="collapse-button">PUT</h4>
+                <div class="collapse-content hidden">
+                    <p>Para modificar un recurso en la base de datos se debe relizar la siguiente petición, enviandole el <span>id</span> del recurso a modificar y <span>un objeto en formato JSON</span> con los atributos y valores del recurso a crear</p>
+                    <img src="../../images/documentation/put.png" alt="imagen url base">
+                    <p>Si el recurso existe y el tipado del objeto enviado, es correcto, la API modificará exitosamente el recurso</p>
+                    <img src="../../images/documentation/put_response.png" alt="imagen url base">
+                </div>
+            </li>
+        </ul>
     </main>
+    <script type="module" src="./docs.js"></script>
 </body>
 </html>

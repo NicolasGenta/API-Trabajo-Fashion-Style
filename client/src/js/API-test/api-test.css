@@ -1,0 +1,96 @@
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: max-content;
+    /* position: absolute; */
+    margin-top: 4em;
+    align-content: baseline;
+}
+main > section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+h2{
+    margin-bottom: 0.5em;
+    width: 90%;
+}
+select {
+    width: 10%;
+    height: 4em;
+    border: none;
+    background-color: beige;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+input {
+    width: 70%;
+    height: 2em;
+    padding: 1em;
+    margin: 1em;
+    border: none;
+    background-color: beige;
+    border-radius: 10px;
+}
+
+#resContainer {
+    background-color: beige;
+    width: 80%;
+    height: 400px;
+    margin: 0.5em;
+    overflow-y: scroll;
+}
+
+#resContainer > p {
+    padding: 1em;
+    margin-top: 0;
+    background-color: #401c2a;
+    color: white;
+    text-align: end;
+}
+
+#resContainer > pre {
+    padding: 2em;
+    font-size: 12px;
+}
+
+
+form {
+    width: 80%;
+    margin: 0.5em 1em 0em 1em;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+form > button {
+    width: 10%;
+    border: none;
+    padding: 1em;
+    margin: 1em;
+    border-radius: 10px;
+    background-color: #401c2a;
+    color: white;
+}
+
+form > button:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+textarea {
+    width: 90%;
+    padding: 2em;
+    margin: 1em;
+    border: none;
+    background-color: beige;
+    border-radius: 10px;
+    resize: none;
+    height: 200px;
+    overflow-y: scroll;
+}

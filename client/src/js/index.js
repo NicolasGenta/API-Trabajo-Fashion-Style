@@ -1,6 +1,8 @@
+
 const body = document.querySelector("body");
 const demoAPIContainer = body.querySelector(".demoAPIContainer");
 const BASE_URL = "http://localhost:3000/productos/"
+
 
 async function request() {
     try{
@@ -35,7 +37,7 @@ request()
     });
     const count = document.createElement("div");
     count.innerHTML= `
-    <p style="color: white;">Mostrando 8 elementos de ${data.length}</p>
+    <p style="color: black;">Mostrando 8 elementos de ${data.length}</p>
     `
     demoAPIContainer.appendChild(count);
 }

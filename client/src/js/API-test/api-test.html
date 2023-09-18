@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../css/index.css">
+    <link rel="stylesheet" type="text/css" href="./api-test.css">
+    <link rel="icon" href="../../images/logo.svg"/>
+    <title>Fashion Style API</title>
+</head>
+<body>
+    <main> 
+        <h2>API Test</h2>
+        <section>
+            <form id="form-test-api">
+                <select name="method" required>
+                    <option value="GET">GET</option>
+                    <option value="POST">POST</option>
+                    <option value="PUT">PUT</option>
+                    <option value="DELETE">DELETE</option>
+                </select>
+                <!-- <label for="input-url">API URL</label> -->
+                <input name="input-url" type="url" placeholder="Ingrese URL" required>
+                <button type="submit">Send</button>
+                <textarea class="hidden" name="data-input" placeholder="Ingrese producto en formato JSON"></textarea>
+            </form>
+            <section id="resContainer" class="hidden"></section>
+        </section>
+    </main>
+    <script type="module" src="./api-test.js"></script>
+</body>
+</html>

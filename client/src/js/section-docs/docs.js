@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 import { insertHeader } from "../util/functions.js";
 
 insertHeader();

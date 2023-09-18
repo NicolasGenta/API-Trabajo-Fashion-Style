@@ -32,7 +32,7 @@ body {
     padding: 0%;
   }
   
-  .instructions_list  li {
+  .instructions_list > li {
     padding: 0.1em 1em 0.1em 1em;
     width: 100%;
     margin-bottom: 0.5em;
@@ -44,7 +44,7 @@ body {
     font-weight: 400;
   }
   
-  .instructions_list li:hover {
+  .instructions_list > li:hover {
     background-color: rgb(218, 217, 217);
   }
   
@@ -77,5 +77,10 @@ body {
   }
   
   span {
+    font-weight: bold;
+  }
+
+  h4 {
+    font-style: italic;
     font-weight: bold;
   }
