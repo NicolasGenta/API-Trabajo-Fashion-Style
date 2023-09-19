@@ -77,18 +77,27 @@ export class ProductoService {
         }
     } 
 
-    async putProductos(id:number,body:producDto): Promise<void>{
-        const isProduct = await this.getProductoById(id);
-        if(!Object.keys(isProduct).length)return;
-        const updateProduct = {
-            ...body,id
-        }
-        const res = await fetch(BASE_URL + id,{
-            method : 'PUT',
-            headers : {
-                'Content-Type': 'application/json'},
-            body : JSON.stringify(updateProduct),
-        })
+    async putProductos(id:number, body:producDto): Promise<void>{
+        try{
+            const isProduct = await this.getProductoById(id);
+            if(!Object.keys(isProduct).length) return;
+            const updateProduct = {
+                ...body,id
+            }
+            const res = await fetch(BASE_URL + id,{
+                method : 'PUT',
+                headers : {
+                    'Content-Type': 'application/json'},
+                body : JSON.stringify(updateProduct),
+            });
+            if(res.ok){
+                const parsed = await res.json();
+                return parsed;
+            }else {
+                throw new Error ('No se pudo actualizar el recurso')
+            }
+        }catch (err){
+            throw new Error ('No se pudo actualizar el recurso')
         }
     }
-
+}

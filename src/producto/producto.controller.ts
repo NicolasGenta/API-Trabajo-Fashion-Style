@@ -57,12 +57,12 @@ export class ProductoController {
     }
 
     @Put('/:id')
-    async putProductos(@Param('id') id: number, @Body() body, @Res() res: Response): Promise<void> {
+    async putProductos(@Param('id') id: number, @Body() body: producDto, @Res() res: Response): Promise<void> {
         try {
             await this.productoService.putProductos(id, body);
             res.status(HttpStatus.OK).json({ message: 'Producto modificado correctamente' });
         } catch (error) {
-            res.status(HttpStatus.BAD_REQUEST).json({ error: 'No se pudo modificar el producto' });
+            res.status(HttpStatus.BAD_REQUEST).json({ error: `No se pudo modificar el producto ${error}` });
     }
 }
 }
