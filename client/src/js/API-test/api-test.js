@@ -21,7 +21,6 @@ method.addEventListener("change", (e)=>{
 
 formAPI.addEventListener("submit", (e)=>{
     e.preventDefault();
-    console.log('enviando formulario...');
     const formData = new FormData(formAPI);
 
     const formMethod = formData.get('method');

@@ -13,6 +13,9 @@
         "L",
         "M"
       ],
+      "mostPurchased" : true,
+      "descuento" : true,
+      "destacado": true,
       "img": "https://img.ltwebstatic.com/images3_pi/2020/08/14/15973735644f1101806bbc2e0d1f77a7c01f597384_thumbnail_600x.webp"
     },
     {
@@ -28,6 +31,8 @@
         "L",
         "M"
       ],
+      "mostPurchased" : false,
+      "descuento" : true,
       "img": "https://img.ltwebstatic.com/images3_pi/2023/07/18/16896441460352109edf60d31c06682784c20608b2_thumbnail_600x.webp"
     },
     {
@@ -45,6 +50,7 @@
         "XL",
         "XXL"
       ],
+      "mostPurchased" : true,
       "img": "https://img.ltwebstatic.com/images3_pi/2023/04/06/1680759342e8849d12586ae3e69d3f548b3deabee5_thumbnail_600x.webp"
     },
     {
@@ -62,6 +68,7 @@
         "XL",
         "XXL"
       ],
+      "mostPurchased" : true,
       "img": "https://img.ltwebstatic.com/images3_pi/2022/08/25/1661394095cc055ccf2d15e73b0394a6c595649835_thumbnail_600x.webp"
     },
     {
@@ -72,6 +79,7 @@
       "descripcion": "decoración de perlas de imitación",
       "precio": 3500,
       "talla": [],
+      "mostPurchased" : false,
       "img": "https://img.ltwebstatic.com/images3_spmp/2023/04/20/16819778450445bfe077936a4cc600e700af116907.jpg"
     },
     {
@@ -82,6 +90,8 @@
       "descripcion": "3 piezas de plástico Marco helado de colores fiesta adorno moda",
       "precio": 5000,
       "talla": [],
+      "mostPurchased" : false,
+      "destacado": true,
       "img": "https://img.ltwebstatic.com/images3_spmp/2023/07/07/1688706429322eed5e96a5005b58364cb27ebef815_thumbnail_600x.webp"
     },
     {
@@ -97,6 +107,8 @@
         "L",
         "M"
       ],
+      "mostPurchased" : false,
+      "descuento" : true,
       "img": "https://img.ltwebstatic.com/images3_pi/2023/08/25/a3/16929695463efabb7823e9e9b2998c89f97f04d3d2_thumbnail_600x.webp"
     },
     {
@@ -112,6 +124,8 @@
         "L",
         "M"
       ],
+      "mostPurchased" : true,
+      "descuento" : true,
       "img": "https://img.ltwebstatic.com/images3_pi/2022/09/28/166436653304cc465805bb5d2cd19720e8b17d8c81_thumbnail_600x.webp"
     },
     {
@@ -127,6 +141,8 @@
         "L",
         "M"
       ],
+      "mostPurchased" : false,
+      "destacado": true,
       "img": "https://img.ltwebstatic.com/images3_pi/2023/04/03/1680510084408eaf9e85d3dce3749a5bc331549185_thumbnail_600x.webp"
     },
     {
@@ -142,6 +158,8 @@
         "L",
         "M"
       ],
+      "mostPurchased" : false,
+      "descuento" : true,
       "img": "https://img.ltwebstatic.com/images3_pi/2023/01/29/16749856630450dd49e0d2790f4ea5be904d9843a2_thumbnail_600x.webp"
     },
     {
@@ -152,6 +170,7 @@
       "descripcion": "Collar con diseño playero",
       "precio": 3000,
       "talla": [],
+      "mostPurchased" : false,
       "img": "https://img.ltwebstatic.com/images3_pi/2022/03/04/16463801071500c4d404d02d67cf13ecb4d0ea073f_thumbnail_600x.webp"
     },
     {
@@ -162,7 +181,23 @@
       "descripcion": "De acero inoxidable con cuenta flor para mujeres para decoración diaria",
       "precio": 2000,
       "talla": [],
+      "mostPurchased" : false,
+      "destacado": true,
       "img": "https://img.ltwebstatic.com/images3_spmp/2023/05/31/16854624445888ddea65b4b83db09a00cd8163ec90_thumbnail_600x.webp"
+    },
+    {
+      "id": 14,
+      "nombre": "Manfinity Sporsity Hombres Cazadora de universidad ",
+      "marca": "Sporsity",
+      "categoria": "Femenino",
+      "descripcion": "Cazadora de universidad",
+      "precio": 30000,
+      "talla": [
+        "XL",
+        "XXL"
+      ],
+      "mostPurchased" : true,
+      "img": "https://img.ltwebstatic.com/images3_pi/2023/01/29/16749856630450dd49e0d2790f4ea5be904d9843a2_thumbnail_600x.webp"
     }
   ]
 }
