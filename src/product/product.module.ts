@@ -10,11 +10,13 @@ import { PedidosService } from 'src/pedidos/pedidos.service';
 import { PedidosController } from 'src/pedidos/pedidos.controller';
 import { Usuario } from 'src/entities/usuario.entity';
 import { Estado } from 'src/entities/estado.entity';
-import { Pedido } from 'src/entities/pedido.entity';
 import { Cliente } from 'src/entities/cliente.entity';
+import { Pedido } from 'src/entities/pedido.entity';
+import { Pedido_detalle } from 'src/entities/pedido_detalle.entity';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Products, Category, Emprendimiento, Rubro, Usuario])],
+    imports: [TypeOrmModule.forFeature([Products, Category, Emprendimiento, Rubro, Usuario,
+    Cliente, Estado, Pedido, Pedido_detalle])],
     providers: [ProductService, PedidosService],
     controllers: [ProductController, PedidosController]
 })

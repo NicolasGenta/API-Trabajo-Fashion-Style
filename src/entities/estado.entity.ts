@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Pedido } from "./pedido.entity";
 
 @Entity('estado')
 export class Estado {
@@ -7,4 +8,8 @@ export class Estado {
 
     @Column()
     nombre_estado :string;
+
+    @ManyToOne(type => Pedido, pedido =>pedido.estado)
+    @JoinColumn({name: 'codigo_pedido'})
+    pedidos: Pedido[];
 }

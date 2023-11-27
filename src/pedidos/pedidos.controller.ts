@@ -5,15 +5,27 @@ import { PedidosService } from './pedidos.service';
 export class PedidosController {
     constructor(private readonly pedidosService: PedidosService) {}
 
-    // @Get('/:clientId')
-    // async getPedidosByCliente(@Res() response, @Param('clientId') id:number){
-    //     try {
-    //         const responseFromService = await this.pedidosService.getPedidoByCliente(id);
-    //         if (responseFromService) {
-    //             return response.status(HttpStatus.CREATED).json(responseFromService);
-    //         }
-    //     } catch (error) {
-    //         return response.status(HttpStatus.BAD_REQUEST).json({ error: `${error}` });
-    //     }
-    // }
+    @Get('/:clientId')
+    async getPedidosByCliente(@Res() response, @Param('clientId') id:number){
+        try {
+            const responseFromService = await this.pedidosService.getPedidoByCliente(id);
+            if (responseFromService) {
+                return response.status(HttpStatus.CREATED).json(responseFromService);
+            }
+        } catch (error) {
+            return response.status(HttpStatus.BAD_REQUEST).json({ error: `${error}` });
+        }
+    }
+
+    @Get('emprendimientos/:clientId')
+    async getPedidosByEmprendimiento(@Res() response, @Param('clientId') id:number){
+        try {
+            const responseFromService = await this.pedidosService.getPedidoByEmprendimiento(id);
+            if (responseFromService) {
+                return response.status(HttpStatus.CREATED).json(responseFromService);
+            }
+        } catch (error) {
+            return response.status(HttpStatus.BAD_REQUEST).json({ error: `${error}` });
+        }
+    }
 }

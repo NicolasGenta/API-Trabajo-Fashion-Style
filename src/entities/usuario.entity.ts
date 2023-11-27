@@ -1,6 +1,7 @@
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Rol } from "./rol.entity";
 import { Persona } from "./persona.entity";
+import { Cliente } from "./cliente.entity";
 
 @Entity('usuario')
 export class Usuario {
@@ -22,4 +23,7 @@ export class Usuario {
     @Column()
     mail :string
 
+    @OneToOne(type =>Cliente, cliente => cliente.user)
+    @JoinColumn({name: 'cliente_id'})
+    cliente: Cliente;
 }

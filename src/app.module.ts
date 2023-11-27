@@ -4,15 +4,10 @@ import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Products } from './entities/product.entity';
-import { Category } from './entities/category.entity';
-import { Emprendimiento } from './entities/emprendimiento.entity';
-import { Rubro } from './entities/rubro.entity';
 import { ProductModule } from './product/product.module';
 import { UserModule } from './user/user.module';
 import { EmprendimientoModule } from './emprendimiento/emprendimiento.module';
-import { PedidosController } from './pedidos/pedidos.controller';
-import { PedidosService } from './pedidos/pedidos.service';
+
 
 
 @Module({
@@ -23,7 +18,7 @@ import { PedidosService } from './pedidos/pedidos.service';
     username: 'admin01',
     password: 'ln40065375',
     database: 'emprende',
-    autoLoadEntities: true,
+    autoLoadEntities: true
   }),
 ProductModule,
 UserModule,

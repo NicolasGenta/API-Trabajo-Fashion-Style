@@ -1,18 +1,19 @@
-import { Column, Entity, OneToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Pedido } from "./pedido.entity";
 import { Products } from "./product.entity";
 
-@Entity()
+@Entity('pedido_detalle')
 export class Pedido_detalle {
     @PrimaryGeneratedColumn()
     pedido_detalle_id :number;
 
-    @Column()
-    @OneToOne(type => Pedido, pedido => pedido.codigo_pedido)
-    pedido_id :number;
+    @ManyToOne(type => Pedido, pedido => pedido.pedidoDetalle)
+    @JoinColumn({ name: 'pedido_id' })  
+    pedido: Pedido;
 
     @OneToOne(type => Products, producto => producto.codigo_producto)
-    codigo_producto :number;
+    @JoinColumn({ name: 'codigo_producto' })  
+    producto :Products;
 
     @Column()
     cantidad: number;

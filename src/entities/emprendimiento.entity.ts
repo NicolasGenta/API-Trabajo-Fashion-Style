@@ -2,6 +2,7 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn, OneToOne, JoinColumn
 import { Rubro } from "./rubro.entity";
 import { Products } from "./product.entity";
 import { Usuario } from "./usuario.entity";
+import { Pedido } from "./pedido.entity";
 
 @Entity('emprendimiento')
 export class Emprendimiento {
@@ -20,4 +21,7 @@ export class Emprendimiento {
 
     @Column()
     estado :boolean
+
+    @OneToMany(type => Pedido, pedido => pedido.emprendimiento)
+    pedido :Pedido[];
 }

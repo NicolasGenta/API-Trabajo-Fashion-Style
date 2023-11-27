@@ -11,28 +11,81 @@ import { Estado } from 'src/entities/estado.entity';
 @Injectable()
 export class PedidosService {
     constructor(
-        // @InjectRepository(Estado)
-        // private readonly categoryRepository : Repository<Estado>,
-        // @InjectRepository(Cliente)
-        // private readonly emprendimientoRepository : Repository<Cliente>,
-        // @InjectRepository(Products)
-        // private readonly pedidosRepository: Repository<Pedido>,
+        @InjectRepository(Estado)
+        private readonly categoryRepository : Repository<Estado>,
+        @InjectRepository(Cliente)
+        private readonly emprendimientoRepository : Repository<Cliente>,
+        @InjectRepository(Pedido)
+        private readonly pedidosRepository: Repository<Pedido>,
         ){}
 
-    //     async getPedidoByCliente(id: number) {
-    //     try{
-    //         const pedidos = await this.pedidosRepository
-    //         .createQueryBuilder('p')
-    //         .select(['p.codigo_pedido', 'e.nombre_estado', 'em.razon_social', 'p.fecha_pedido'])
-    //         .innerJoinAndSelect('p.emprendimiento', 'em')  // Incluye la relación con Emprendimiento
-    //         .innerJoinAndSelect('p.estado', 'e')          // Incluye la relación con Estado
-    //         .innerJoinAndSelect('p.cliente', 'c')         // Incluye la relación con Cliente
-    //         .where('c.cliente_id = :id', { id })         // Filtro por ID de Cliente
-    //         .getRawMany();
+        async getPedidoByCliente(id: number) {
+        try{
+            const pedidos = await this.pedidosRepository
+            .createQueryBuilder('p')
+            .select(['p.codigo_pedido AS pedido',
+            'p.fecha_pedido AS fecha',
+            'em.razon_social AS emprendimiento',
+            'e.nombre_estado AS estado',
+            'u.mail AS email',
+            'per.first_name AS nombre',
+            'per.last_name AS apellido', 
+            'pdet.codigo_producto AS codigo_producto', 
+            'pdet.cantidad AS cantidad',
+            'prod.nombre_producto AS producto',
+            'prod.img AS img',
+            'prod.precio AS precio',
+            'cat.nombre_categoria AS categoria'
+            ])
+            .innerJoin('p.emprendimiento', 'em') 
+            .innerJoin('p.estado', 'e')
+            .innerJoin('p.pedidoDetalle', 'pdet')
+            .innerJoin('pdet.producto', 'prod')
+            .innerJoin('prod.category', 'cat')
+            .innerJoin('p.cliente', 'c')   
+            .innerJoin('c.user', 'u')
+            .innerJoin('u.persona', 'per')
+            .where('c.cliente_id = :id', { id })
+            .getRawMany();
 
-    //         return pedidos
-    //     }catch(err){
-    //         throw new Error(`Error al obtener los datos: ${err.message}`)
-    //     }
-    // }
+            return pedidos
+        }catch(err){
+            throw new Error(`Error al obtener los datos: ${err.message}`)
+        }
+    }
+
+    async getPedidoByEmprendimiento(id: number) {
+        try{
+            const pedidos = await this.pedidosRepository
+            .createQueryBuilder('p')
+            .select(['p.codigo_pedido AS pedido',
+            'p.fecha_pedido AS fecha',
+            'e.nombre_estado AS estado',
+            'u.mail AS email',
+            'per.first_name AS nombre',
+            'per.last_name AS apellido', 
+            'pdet.codigo_producto AS codigo_producto', 
+            'pdet.producto',
+            'pdet.cantidad AS cantidad',
+            'prod.nombre_producto AS producto',
+            'prod.img AS img',
+            'prod.precio AS precio',
+            'cat.nombre_categoria AS categoria'
+            ])
+            .innerJoin('p.emprendimiento', 'em') 
+            .innerJoin('p.estado', 'e')
+            .innerJoin('p.pedidoDetalle', 'pdet')
+            .innerJoin('pdet.producto', 'prod')
+            .innerJoin('prod.category', 'cat')
+            .innerJoin('p.cliente', 'c')   
+            .innerJoin('c.user', 'u')
+            .innerJoin('u.persona', 'per')
+            .where('em.emprendimiento_id = :id', { id })
+            .getRawMany();
+
+            return pedidos
+        }catch(err){
+            throw new Error(`Error al obtener los datos: ${err.message}`)
+        }
+    }
 }
