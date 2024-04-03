@@ -14,6 +14,9 @@ import { Rubro } from 'src/entities/rubro.entity';
 
 @Injectable()
 export class UserService {
+    findOne(username: string): Promise<Usuario | undefined> {
+        throw new Error('Method not implemented.');
+    }
 
     constructor(
         @InjectRepository(Usuario)

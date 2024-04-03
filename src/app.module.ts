@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductModule } from './product/product.module';
 import { UserModule } from './user/user.module';
 import { EmprendimientoModule } from './emprendimiento/emprendimiento.module';
+import { AuthModule } from './auth/auth.module';
 
 
 
@@ -15,14 +16,15 @@ import { EmprendimientoModule } from './emprendimiento/emprendimiento.module';
     type: 'mysql',
     host: 'localhost',
     port: 3306,
-    username: 'admin01',
-    password: 'ln40065375',
+    username: 'root',
+    password: 'root',
     database: 'emprende',
     autoLoadEntities: true
   }),
 ProductModule,
 UserModule,
-EmprendimientoModule],
+EmprendimientoModule,
+AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
