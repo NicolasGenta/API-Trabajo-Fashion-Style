@@ -1,9 +1,9 @@
 import { AuthController } from './auth.controller';
-import { AuthService } from './auth.service'; 
+import { AuthService } from './auth.service';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constants';
 import { UserModule } from 'src/user/user.module';
-import { forwardRef, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 
 
 @Module({
@@ -13,9 +13,11 @@ import { forwardRef, Module } from '@nestjs/common';
       secret: jwtConstants.secret,
       signOptions: { expiresIn: '60s' },
     }),
-     UserModule,
+    
+    UserModule, 
   ],
   controllers: [AuthController],
   providers: [AuthService],
+  exports: [AuthService, ],
 })
 export class AuthModule {}

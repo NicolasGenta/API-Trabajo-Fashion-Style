@@ -28,29 +28,31 @@ export class UserService {
         private readonly personaRepository: Repository<Persona>
     ){}
 
-    async getAuth(userLogin :userLoginDto){
+    async getAuth(usuario: string){
         try{
-            const { email, password } = userLogin;
-            const result = await this.userRepository
-            .createQueryBuilder('u')
-            .select([
-                'e.emprendimiento_id as emprendimiento_id',
-                'e.razon_social as razon_social',
-                'r.nombre_rubro as nombre_rubro',
-                'u.usuario_id as usuario_id',
-                'rl.rol_name as role_name',
-                'u.mail as email',
-                'p.persona_id as persona_id',
-                'p.first_name as first_name',
-                'p.last_name as last_name',
-            ])
-            .leftJoin(Emprendimiento, 'e', 'u.usuario_id = e.usuario_id')
-            .leftJoin(Rubro, 'r', 'e.rubro_id = r.rubro_id')
-            .innerJoin(Persona, 'p', 'p.persona_id = u.persona_id')
-            .innerJoin(Rol, 'rl', 'u.rol_id = rl.rol_id')
-            .andWhere('u.mail = :email', {email})
-            .andWhere('u.password = :password', {password})
-            .getRawOne();
+            const result = await this.userRepository.findOne({where:{mail:usuario}})
+            if(! result) throw new Error ("estas baneado")
+            // const { email, password } = userLogin;
+            // const result = await this.userRepository
+            // .createQueryBuilder('u')
+            // .select([
+            //     'e.emprendimiento_id as emprendimiento_id',
+            //     'e.razon_social as razon_social',
+            //     'r.nombre_rubro as nombre_rubro',
+            //     'u.usuario_id as usuario_id',
+            //     'rl.rol_name as role_name',
+            //     'u.mail as email',
+            //     'p.persona_id as persona_id',
+            //     'p.first_name as first_name',
+            //     'p.last_name as last_name',
+            // ])
+            // .leftJoin(Emprendimiento, 'e', 'u.usuario_id = e.usuario_id')
+            // .leftJoin(Rubro, 'r', 'e.rubro_id = r.rubro_id')
+            // .innerJoin(Persona, 'p', 'p.persona_id = u.persona_id')
+            // .innerJoin(Rol, 'rl', 'u.rol_id = rl.rol_id')
+            // .andWhere('u.mail = :email', {email})
+            // .andWhere('u.password = :password', {password})
+            // .getRawOne();
             return result;
         }catch (err) {
             throw new Error (err)
