@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { producDto } from './producto.dto';
-import { Repository } from 'typeorm';
+import { EntityManager, Repository } from 'typeorm';
 import { Products } from '../entities/product.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Category } from 'src/entities/category.entity';
@@ -8,7 +8,8 @@ import { Emprendimiento } from 'src/entities/emprendimiento.entity';
 import { Pedido } from 'src/entities/pedido.entity';
 import { Usuario } from 'src/entities/usuario.entity';
 import { producUpdateDto } from './productUpdate.dto';
-
+import { writeFile } from 'fs';
+import * as path from 'path';
 
 @Injectable()
 export class ProductService {
@@ -23,33 +24,38 @@ export class ProductService {
         @InjectRepository(Emprendimiento)
         private readonly emprendimientoRepository : Repository<Emprendimiento>,
         @InjectRepository(Products)
-        private readonly pedidosRepository: Repository<Pedido>,){}
+        private readonly pedidosRepository: Repository<Pedido>,
+        private readonly entityManager : EntityManager
+    ){}
 
     async crearProducto(producDto: producDto) {
         try {
+            let nuevoProducto;
             const { nombre, descripcion, precio, img, category, emprendimiento } = producDto;
-            const categoryProduct = await this.categoryRepository.findOne({where: {nombre_categoria: category}});
-            const emprendimientoProduct = await this.emprendimientoRepository.findOne({where:{emprendimiento_id: emprendimiento}})
-            
-            if(!categoryProduct) throw new Error(`La categoria ${category} no existe`);
-            if(!emprendimientoProduct) throw new Error(`El emprendimiento ${emprendimiento} no existe`)
+            await this.categoryRepository.manager.transaction( async (manager) => {
 
-            const nuevoProducto = this.productRepository.create({
-                nombre_producto: nombre,
-                descripcion: descripcion,
-                precio: precio,
-                img: img,
-                category: categoryProduct,
-                emprendimiento: emprendimientoProduct
-            });
-
-            await this.productRepository.save(nuevoProducto);
+                const categoryProduct = await this.categoryRepository.findOne({where: {nombre_categoria: category}});
+                const emprendimientoProduct = await this.emprendimientoRepository.findOne({where:{emprendimiento_id: emprendimiento}})
+                
+                if(!categoryProduct) throw new Error(`La categoria ${category} no existe`);
+                if(!emprendimientoProduct) throw new Error(`El emprendimiento ${emprendimiento} no existe`)
+    
+                nuevoProducto = this.productRepository.create({
+                    nombre_producto: nombre,
+                    descripcion: descripcion,
+                    precio: precio,
+                    img: img,
+                    category: categoryProduct,
+                    emprendimiento: emprendimientoProduct
+                });
+    
+                await this.productRepository.save(nuevoProducto);
+            })
 
             return nuevoProducto;
         } catch (error) {
             throw new Error(`Se ha producido un error: ${error}`);
         }
-
     }
 
     async getProductoById(id : number): Promise <any> {
@@ -153,4 +159,22 @@ export class ProductService {
             throw new Error(error)
         }
     }
+
+    async createNewProduct(producDto : producDto) {
+        /* 
+        - Obtener las propiedades nombre, descripción, precio, img, category, emprendimiento;
+        - Pasar img base64 a un archivo con fs
+        - Generar id único para el archivo
+        - Guardar img en la carpeta ./src/private con el id como nombre
+        - Guardar el resto de las propiedades más el id de la imagen en la DB
+        */
+        try {
+            const { nombre, descripcion, precio, img, category, emprendimiento } = producDto;
+
+        } catch (error) {
+            
+        }
+
+    }
+
 }

@@ -8,14 +8,13 @@ import { Persona } from 'src/entities/persona.entity';
 import { Cliente } from 'src/entities/cliente.entity';
 import { Emprendimiento } from 'src/entities/emprendimiento.entity';
 import { Rubro } from 'src/entities/rubro.entity';
-import { AuthModule } from 'src/auth/auth.module';
 
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Usuario, Rol, Persona, Cliente, Emprendimiento, Rubro]),
-  forwardRef(() => AuthModule)],
-
+  imports: [TypeOrmModule.forFeature([Usuario, Rol, Persona, Cliente, Emprendimiento, Rubro])],
   providers: [UserService],
-  controllers: [UserController]
+  controllers: [UserController],
+  exports: [UserService]
 })
+
 export class UserModule {}

@@ -1,9 +1,12 @@
-import { Controller, Get, Param, Post, Body, Res, HttpStatus, Delete, Put, Query } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Res, HttpStatus, Delete, Put, Query, UseGuards } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { producDto } from './producto.dto';
 import { Products } from '../entities/product.entity';
 import { Category } from 'src/entities/category.entity';
 import { producUpdateDto } from './productUpdate.dto';
+import { AuthGuard } from 'src/auth/guard/auth.guard';
+import { RolesGuard } from 'src/auth/guard/roles.guard';
+import { Roles } from 'src/auth/decorators/roles.decorator';
 
 
 
@@ -46,6 +49,8 @@ export class ProductController {
             return response.status(HttpStatus.NOT_FOUND).json({ error: `Error al obtener categorías: ${error.message}` });
         }
     }
+    @UseGuards(AuthGuard, RolesGuard)
+    @Roles('Emprendedor')
     @Delete('/:id')
     async deleteProductos(@Param('id') id: number, @Res() res) {
         try {
@@ -70,6 +75,8 @@ export class ProductController {
 
     
     @Post()
+    @UseGuards(AuthGuard, RolesGuard)
+    @Roles('Emprendedor')
     async crearProducto(@Res() response, @Body() producDto: producDto) {
         console.log(producDto)
         try {
@@ -84,6 +91,8 @@ export class ProductController {
     
 
     @Put('/:id')
+    @UseGuards(AuthGuard, RolesGuard)
+    @Roles('Emprendedor')
     async putProductos(@Param('id') id: number, @Body() body: producUpdateDto, @Res() res): Promise<void> {
         try {
             await this.productoService.putProductos(id, body);

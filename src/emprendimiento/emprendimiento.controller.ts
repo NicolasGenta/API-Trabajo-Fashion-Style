@@ -1,7 +1,10 @@
-import { Controller, Get, Res, HttpStatus, Param, Query, Put, Body } from '@nestjs/common';
+import { Controller, Get, Res, HttpStatus, Param, Query, Put, Body, UseGuards } from '@nestjs/common';
 import { EmprendimientoService } from './emprendimiento.service';
 import { Products } from 'src/entities/product.entity';
 import { emprendimientoUdpatedDto } from './empUdpate.dto';
+import { AuthGuard } from 'src/auth/guard/auth.guard';
+import { Roles } from 'src/auth/decorators/roles.decorator';
+import { RolesGuard } from 'src/auth/guard/roles.guard';
 
 @Controller('/emprendimiento')
 export class EmprendimientoController {
@@ -30,6 +33,8 @@ export class EmprendimientoController {
         }
     }
 
+    @UseGuards(AuthGuard, RolesGuard)
+    @Roles('Emprendedor')
     @Get("/:id")
     async getEmprendimientoById(@Res() response, @Param("id") id :number){
         try{
@@ -40,6 +45,8 @@ export class EmprendimientoController {
         }
     }
 
+    @UseGuards(AuthGuard, RolesGuard)
+    @Roles('Emprendedor')
     @Put()
     async actualizarEstado(@Res() response, @Body() emprendimientoUpdate: emprendimientoUdpatedDto){
         try{
