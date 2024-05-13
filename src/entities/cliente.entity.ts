@@ -7,10 +7,10 @@ export class Cliente {
     @PrimaryGeneratedColumn()
     cliente_id : number;
 
-    @OneToOne(type => Usuario, usuario => usuario.cliente)
+    @OneToOne(() => Usuario, usuario => usuario.usuario_id)
     @JoinColumn({name: 'user_id'})
     user: Usuario;
 
-    @OneToMany(type=> Pedido, pedido => pedido.cliente)
+    @OneToMany(()=> Pedido, pedido => pedido.cliente)
     pedidos: Pedido[];
 }

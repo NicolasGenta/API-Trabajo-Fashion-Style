@@ -11,6 +11,7 @@ import { Cliente } from 'src/entities/cliente.entity';
 import { Emprendimiento } from 'src/entities/emprendimiento.entity';
 import { AuthResult } from './AuthResult';
 import { Rubro } from 'src/entities/rubro.entity';
+import { error } from 'console';
 
 @Injectable()
 export class UserService {
@@ -29,32 +30,31 @@ export class UserService {
     ){}
 
     async getAuth(usuario: string){
-        try{
-            const result = await this.userRepository.findOne({where:{mail:usuario}})
-            if(! result) throw new Error ("estas baneado")
-            // const { email, password } = userLogin;
-            // const result = await this.userRepository
-            // .createQueryBuilder('u')
-            // .select([
-            //     'e.emprendimiento_id as emprendimiento_id',
-            //     'e.razon_social as razon_social',
-            //     'r.nombre_rubro as nombre_rubro',
-            //     'u.usuario_id as usuario_id',
-            //     'rl.rol_name as role_name',
-            //     'u.mail as email',
-            //     'p.persona_id as persona_id',
-            //     'p.first_name as first_name',
-            //     'p.last_name as last_name',
-            // ])
-            // .leftJoin(Emprendimiento, 'e', 'u.usuario_id = e.usuario_id')
-            // .leftJoin(Rubro, 'r', 'e.rubro_id = r.rubro_id')
-            // .innerJoin(Persona, 'p', 'p.persona_id = u.persona_id')
-            // .innerJoin(Rol, 'rl', 'u.rol_id = rl.rol_id')
-            // .andWhere('u.mail = :email', {email})
-            // .andWhere('u.password = :password', {password})
-            // .getRawOne();
+        try{   
+             const result = await this.userRepository
+             .createQueryBuilder('u')
+             .select([
+                 'e.emprendimiento_id as emprendimiento_id',
+                 'e.razon_social as razon_social',
+                 'r.nombre_rubro as nombre_rubro',
+                 'u.usuario_id as usuario_id',
+                 'u.password as password',
+                 'rl.rol_name as role_name',
+                 'u.mail as email',
+                 'p.persona_id as persona_id',
+                 'p.first_name as first_name',
+                 'p.last_name as last_name',
+             ])
+             .leftJoin(Emprendimiento, 'e', 'u.usuario_id = e.usuario_id')
+             .leftJoin(Rubro, 'r', 'e.rubro_id = r.rubro_id')
+             .innerJoin(Persona, 'p', 'p.persona_id = u.persona_id')
+             .innerJoin(Rol, 'rl', 'u.rol_id = rl.rol_id')
+             .andWhere('u.mail = :usuario', {usuario})
+             .getRawOne();
+             
             return result;
         }catch (err) {
+            console.log(err)
             throw new Error (err)
         }
     }
@@ -98,6 +98,6 @@ export class UserService {
         userExists.password = password;
 
         await this.userRepository.save(userExists)
-        return 'Cambio de conteseña existoso'
+        return 'Cambio de contseña existoso'
     }
 }

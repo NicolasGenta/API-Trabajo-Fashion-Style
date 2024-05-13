@@ -22,8 +22,5 @@ export class Usuario {
 
     @Column()
     mail :string
-
-    @OneToOne(type =>Cliente, cliente => cliente.user)
-    @JoinColumn({name: 'cliente_id'})
-    cliente: Cliente;
+      
 }

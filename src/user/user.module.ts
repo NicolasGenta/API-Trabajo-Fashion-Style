@@ -17,6 +17,7 @@ import { Rubro } from 'src/entities/rubro.entity';
 ],
 
   providers: [UserService],
-  controllers: [UserController]
+  controllers: [UserController],
+  exports: [UserService],
 })
 export class UserModule {}
