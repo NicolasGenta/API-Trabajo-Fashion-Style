@@ -9,8 +9,12 @@ async function bootstrap() {
   whitelist: true,
  }),
  );
-  app.enableCors()
-  app.use(cookieParser())
+  app.enableCors({
+    origin: 'http://localhost:5173',
+    methods: 'GET, PUT, POST, DELETE',
+    allowedHeaders: 'Content-Type, Authorization'
+  })
+  // app.use(cookieParser())
   await app.listen(3000);
 }
 bootstrap();
