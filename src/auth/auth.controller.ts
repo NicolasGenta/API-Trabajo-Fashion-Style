@@ -1,14 +1,7 @@
 import { Body, Controller, Post, Get, UseGuards, Res , Req } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { Request, Response } from 'express';
 import { AuthGuard } from './guard/auth.guard';
-
-interface RequestWithUser extends Request {
-    user: { 
-        email :string, 
-        role: string
-    }
-}
+import { RequestWithUser } from './interfaces/requestWithUser.interface';
 
 @Controller('auth')
 export class AuthController {
@@ -27,9 +20,16 @@ export class AuthController {
         }
     }
 
+    @UseGuards(AuthGuard)
     @Post('register')
-    register() {
-        return 'register'
+    async register(@Res() response) {
+        try {
+            const responseFromService = await this.authService.logout();
+
+            return response.status(200).json({message: 'user created'})
+        } catch (error) {
+            return response.status(500).json('Internal Server Error')
+        }
     }
 
     @Get('profile')

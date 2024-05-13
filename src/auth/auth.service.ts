@@ -20,15 +20,21 @@ export class AuthService {
             const {usuario_id} = user;
             const payload = { user_id: usuario_id, role: user.rol_id.rol_name };
             const token = await this.jwtService.signAsync(payload);
+
+            const userData = await this.usersService.getUser(usuario_id)
             
             return {
                 token,
-                user
+                userData
             };
 
         }catch(err) {
             throw new Error(err.message);
         }
+    }
+
+    async logout() {
+
     }
 
     private async comparePassword(userPassword :string, storedHash :string) {
