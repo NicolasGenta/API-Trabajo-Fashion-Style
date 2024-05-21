@@ -24,4 +24,5 @@ export class Emprendimiento {
 
     @OneToMany(type => Pedido, pedido => pedido.emprendimiento)
     pedido :Pedido[];
+
 }

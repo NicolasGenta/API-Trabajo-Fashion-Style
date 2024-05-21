@@ -10,14 +10,11 @@ import { Emprendimiento } from 'src/entities/emprendimiento.entity';
 import { Rubro } from 'src/entities/rubro.entity';
 
 
-
 @Module({
-  imports: [TypeOrmModule.forFeature([Usuario, Rol, Persona, Cliente, Emprendimiento, Rubro]),
-
-],
-
+  imports: [TypeOrmModule.forFeature([Usuario, Rol, Persona, Cliente, Emprendimiento, Rubro])],
   providers: [UserService],
   controllers: [UserController],
-  exports: [UserService],
+  exports: [UserService]
 })
+
 export class UserModule {}

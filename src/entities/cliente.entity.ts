@@ -8,7 +8,7 @@ export class Cliente {
     cliente_id : number;
 
     @OneToOne(() => Usuario, usuario => usuario.usuario_id)
-    @JoinColumn({name: 'user_id'})
+    @JoinColumn({ name: 'user_id' })
     user: Usuario;
 
     @OneToMany(()=> Pedido, pedido => pedido.cliente)

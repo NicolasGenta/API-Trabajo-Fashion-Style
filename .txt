@@ -1,0 +1,8 @@
+Info:
+
+🇲🇩 IMAGE MODULE => Maneja las imagenes y/o files
+IMAGE SERVICE:
+- getImage => Método que retorna la imagen almacenada en el directorio /private, en base64.
+
+MAIL MODULE => Maneja en envío de emails
+

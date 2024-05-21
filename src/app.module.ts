@@ -8,9 +8,7 @@ import { ProductModule } from './product/product.module';
 import { UserModule } from './user/user.module';
 import { EmprendimientoModule } from './emprendimiento/emprendimiento.module';
 import { AuthModule } from './auth/auth.module';
-
-
-
+import { ImageModule } from './image/image.module';
 
 
 @Module({
@@ -21,14 +19,17 @@ import { AuthModule } from './auth/auth.module';
     username: 'root',
     password: 'root',
     database: 'emprende',
-    autoLoadEntities: true
+    autoLoadEntities: true,
+    synchronize: false,
   }),
 ProductModule,
 UserModule,
 EmprendimientoModule,
 AuthModule,
- ],
+ImageModule
+],
   controllers: [AppController],
   providers: [AppService],
 })
+
 export class AppModule {}
