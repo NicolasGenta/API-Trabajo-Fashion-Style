@@ -20,7 +20,7 @@ import { ImageModule } from './image/image.module';
     password: 'root',
     database: 'emprende',
     autoLoadEntities: true,
-    synchronize: false,
+    synchronize: false
   }),
 ProductModule,
 UserModule,

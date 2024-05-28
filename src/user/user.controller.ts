@@ -56,28 +56,17 @@ export class UserController {
         }
     }
 
-    // @Put()
-    // async updatePassword(@Res() response, @Body() user : udpatePasswordDto) {
-    //     try{
-    //         const responseFromService = await this.userService.updatePassword(user);
-    //         if (responseFromService) {
-    //             return response.status(HttpStatus.OK).json(responseFromService);
-    //         }
-    //     } catch (err) {
-    //         console.error(err); // Registra el error para obtener más información en la consola
-    //         return response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: 'Internal Server Error' });
-    //     }
-    // }
-    // @Put()
-    // async updatePassword(@Res() response, @Body() user : udpatePasswordDto) {
-    //     try{
-    //         const responseFromService = await this.userService.updatePassword(user);
-    //         if (responseFromService) {
-    //             return response.status(HttpStatus.OK).json(responseFromService);
-    //         }
-    //     } catch (err) {
-    //         console.error(err); // Registra el error para obtener más información en la consola
-    //         return response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: 'Internal Server Error' });
-    //     }
-    // }
+     @Put()
+     async updatePassword(@Res() response, @Body() user : udpatePasswordDto) {
+         try{
+             const responseFromService = await this.userService.updatePassword(user);
+             if (responseFromService) {
+                 return response.status(HttpStatus.OK).json(responseFromService);
+             }
+         } catch (err) {
+             console.error(err); // Registra el error para obtener más información en la consola
+             return response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: 'Internal Server Error' });
+         }
+     }
+
 }
