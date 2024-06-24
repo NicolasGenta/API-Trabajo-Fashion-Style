@@ -28,6 +28,89 @@ export class ProductService {
         private readonly entityManager : EntityManager
     ){}
 
+    // 👇 GETS
+    // Products
+    async getProductoById(id : number): Promise <any> {
+        try{
+            const productForId = await this.productRepository
+            .createQueryBuilder("products")
+            .innerJoinAndSelect("products.category", "category")
+            .innerJoinAndSelect("products.emprendimiento", "emprendimiento")
+            .where(`products.codigo_producto = ${id}`)
+            .getMany()
+
+            return productForId
+        } catch(err) {
+            throw new Error(`Error al obtener los datos: ${err.message}`)
+        }
+    }
+
+    async getProductos(): Promise<Products[]> {
+        try {
+            const productsWithCategories = await this.productRepository
+            .createQueryBuilder("products")
+            .innerJoinAndSelect("products.category", "category")
+            .innerJoinAndSelect("products.emprendimiento", "emprendimiento")
+            .getMany();
+            return productsWithCategories;
+        }catch(err){
+            throw new Error(`Error al obtener los datos: ${err.message}`)
+        }
+    }
+
+    async getProductsByEmprendimientoId(id: number) {
+        const products = await this.productRepository
+            .createQueryBuilder("p")
+            .select([
+                'p.codigo_producto as codigo',
+                'p.nombre_producto as nombre',
+                'p.descripcion as descripcion',
+                'p.precio as precio',
+                'p.img as img',
+                'c.nombre_categoria as categoria',
+            ])
+            .innerJoin("p.category", "c")
+            .innerJoin("p.emprendimiento", "e")
+            .where("e.emprendimiento_id = :id", { id })
+            .getRawMany();
+        
+        return products;
+    }
+
+    //Others
+    async getCategories(): Promise<Category[]> {
+        try {
+            const categories = await this.categoryRepository.find()
+            console.log(categories);
+            if(!categories) throw new Error ('Ha sucedido un error')
+            return categories;
+        }catch(err){
+            throw new Error(`Error al obtener los datos: ${err.message}`)
+        }
+    }
+
+    async getMaxPrecio(){
+        try {
+            const maxPrecio = await this.productRepository
+            .createQueryBuilder('producto')
+            .select("MAX(producto.precio)", "maxPrecio")
+            .getRawOne();
+
+            return maxPrecio;
+        }catch (error) {
+            console.error(`Error al obtener el precio máximo: ${error.message}`);
+            throw new Error(error)
+        }
+    }
+
+    // 👇 POST
+
+
+    //👇 PUT
+
+    
+    //👇 DELETE
+
     async crearProducto(producDto: producDto) {
         try {
             let nuevoProducto;
@@ -58,33 +141,6 @@ export class ProductService {
         }
     }
 
-    async getProductoById(id : number): Promise <any> {
-        try{
-            const productForId = await this.productRepository
-            .createQueryBuilder("products")
-            .innerJoinAndSelect("products.category", "category")
-            .innerJoinAndSelect("products.emprendimiento", "emprendimiento")
-            .where(`products.codigo_producto = ${id}`)
-            .getMany()
-
-            return productForId
-        } catch(err) {
-            throw new Error(`Error al obtener los datos: ${err.message}`)
-        }
-    }
-
-    async getProductos(): Promise<Products[]> {
-        try {
-            const productsWithCategories = await this.productRepository
-            .createQueryBuilder("products")
-            .innerJoinAndSelect("products.category", "category")
-            .innerJoinAndSelect("products.emprendimiento", "emprendimiento")
-            .getMany();
-            return productsWithCategories;
-        }catch(err){
-            throw new Error(`Error al obtener los datos: ${err.message}`)
-        }
-    }
 
     async deleteProductos(id:number){
         try{
@@ -118,45 +174,6 @@ export class ProductService {
             return productoExistente;
         }catch (err){
             throw new Error ('No se pudo actualizar el recurso')
-        }
-    }
-
-    async getProductsByEmprendimientoId (emprendimientoId: number){
-        const emprendimiento = await this.emprendimientoRepository.findOne({where:{emprendimiento_id: emprendimientoId}})
-
-        if(!emprendimiento) throw new Error('Emprendimiento no encontrado');
-
-        const productosPorEmprendimiento = await this.productRepository
-            .createQueryBuilder("products")
-            .innerJoinAndSelect("products.category", "category")
-            .innerJoinAndSelect("products.emprendimiento", "emprendimiento")
-            .andWhere(`emprendimiento.emprendimiento_id = :emprendimientoId`, {emprendimientoId : emprendimientoId})
-            .getMany();
-            return productosPorEmprendimiento;
-    }   
-
-    async getCategories(): Promise<Category[]> {
-        try {
-            const categories = await this.categoryRepository.find()
-            console.log(categories);
-            if(!categories) throw new Error ('Ha sucedido un error')
-            return categories;
-        }catch(err){
-            throw new Error(`Error al obtener los datos: ${err.message}`)
-        }
-    }
-
-    async getMaxPrecio(){
-        try {
-            const maxPrecio = await this.productRepository
-            .createQueryBuilder('producto')
-            .select("MAX(producto.precio)", "maxPrecio")
-            .getRawOne();
-
-            return maxPrecio;
-        }catch (error) {
-            console.error(`Error al obtener el precio máximo: ${error.message}`);
-            throw new Error(error)
         }
     }
 

@@ -82,4 +82,28 @@ export class EmprendimientoService {
             throw new Error(`Error al obtener productos por mail: ${error.message}`);
         }
     }
+
+    async getEmprendimientoByUserId(id: number){
+        try {
+            console.log('id service',id);
+            
+            const emprendimiento = await this.emprendimientoRespository
+            .createQueryBuilder('e')
+            .select([
+                'e.emprendimiento_id as id',
+                'e.razon_social as razon_social',
+                'r.nombre_rubro as rubro',
+                'e.estado as estado',
+            ])
+            .innerJoin('e.usuario', 'u')
+            .innerJoin('e.rubro', 'r')
+            .where('u.usuario_id = :id', { id })
+            .getRawOne();
+
+            return emprendimiento;
+        } catch (error) {
+            // Manejar el error según sea necesario
+            throw new Error(error);
+        }
+    }
 }

@@ -9,7 +9,7 @@ export class Rubro {
     @Column()
     nombre_rubro :string;
 
-    @ManyToOne(type => Emprendimiento, emprendimiento => emprendimiento.rubro_id)
+    @ManyToOne(type => Emprendimiento, emprendimiento => emprendimiento.rubro)
     emprendimientos :Emprendimiento[];
     
 }
