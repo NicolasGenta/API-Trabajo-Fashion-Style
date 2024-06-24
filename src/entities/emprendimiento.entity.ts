@@ -3,6 +3,7 @@ import { Rubro } from "./rubro.entity";
 import { Products } from "./product.entity";
 import { Usuario } from "./usuario.entity";
 import { Pedido } from "./pedido.entity";
+import { IsEmail } from "class-validator";
 
 @Entity('emprendimiento')
 export class Emprendimiento {
@@ -30,4 +31,5 @@ export class Emprendimiento {
     @OneToMany(type => Pedido, pedido => pedido.emprendimiento)
     pedido :Pedido[];
 
+  
 }

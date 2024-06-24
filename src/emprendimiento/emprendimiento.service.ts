@@ -38,14 +38,17 @@ export class EmprendimientoService {
             .select([
                 'emprendimiento_id as id',
                 'razon_social as nombre',
-                'estado as estado'
-            ]);
+                'estado as estado',
+                'usuario.mail as email'
+            ])
+             .innerJoin('emprendimiento.usuario', 'usuario');
+
             if(!emprendimientos) throw new Error ('Ha sucedido un error')
 
             const result = await emprendimientos.getRawMany();
             return result;
         }catch (err){
-            throw new Error(`${err}`)
+            throw new Error(`${err}`);
         }
     }
 

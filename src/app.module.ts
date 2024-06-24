@@ -9,6 +9,7 @@ import { UserModule } from './user/user.module';
 import { EmprendimientoModule } from './emprendimiento/emprendimiento.module';
 import { AuthModule } from './auth/auth.module';
 import { ImageModule } from './image/image.module';
+import { MailModule } from './mail/mail.module';
 
 
 @Module({
@@ -26,7 +27,8 @@ ProductModule,
 UserModule,
 EmprendimientoModule,
 AuthModule,
-ImageModule
+ImageModule,
+MailModule
 ],
   controllers: [AppController],
   providers: [AppService],

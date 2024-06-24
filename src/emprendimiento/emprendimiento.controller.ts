@@ -1,15 +1,19 @@
-import { Controller, Get, Res, HttpStatus, Param, Query, Put, Body, UseGuards } from '@nestjs/common';
+import { Controller, Get, Res, HttpStatus, Param, Query, Put, Body, UseGuards, Post } from '@nestjs/common';
 import { EmprendimientoService } from './emprendimiento.service';
 import { Products } from 'src/entities/product.entity';
 import { emprendimientoUdpatedDto } from './empUdpate.dto';
 import { AuthGuard } from 'src/auth/guard/auth.guard';
 import { Roles } from 'src/auth/decorators/roles.decorator';
 import { RolesGuard } from 'src/auth/guard/roles.guard';
+import { MailService } from 'src/mail/mail.service';
 
 @Controller('/emprendimiento')
 export class EmprendimientoController {
-
-    constructor(private readonly emprendimientoService: EmprendimientoService){}
+  
+       constructor(
+        private readonly emprendimientoService: EmprendimientoService,
+        private readonly mailService: MailService,
+    ){}
 
     @Get()
     async getEmprendimientos(@Res() response){
@@ -56,6 +60,19 @@ export class EmprendimientoController {
             return response.status(HttpStatus.NOT_FOUND).json({message: `${err}`})
         }
     }
-
+    
+    @Post('/send-email')
+    async sendEmail(
+      @Res() response,
+      @Body() sendMailDto: { to: string; subject: string; text: string },
+    ) {
+      try {
+        await this.mailService.sendMail(sendMailDto.to, sendMailDto.subject, sendMailDto.text);
+        return response.status(HttpStatus.OK).json({ message: 'Correo enviado con éxito' });
+      } catch (error) {
+        return response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ error: `Error al enviar el correo: ${error.message}` });
+      }
+    
+  }
 
 }
