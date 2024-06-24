@@ -13,7 +13,8 @@ import { MailModule } from './mail/mail.module';
 
 
 @Module({
-  imports: [ServeStaticModule.forRoot({rootPath: join(__dirname,'..','client')}), TypeOrmModule.forRoot({
+  imports: [ServeStaticModule.forRoot({rootPath: join(__dirname,'..','client')}), 
+  TypeOrmModule.forRoot({
     type: 'mysql',
     host: 'localhost',
     port: 3306,

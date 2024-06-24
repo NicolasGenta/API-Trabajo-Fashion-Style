@@ -17,7 +17,7 @@ export class AuthService {
             if (!verify) {
                 throw new UnauthorizedException();
             }
-            const {usuario_id} = user;
+            const { usuario_id } = user;
             const payload = { user_id: usuario_id, role: user.rol_id.rol_name };
             const token = await this.jwtService.signAsync(payload);
 

@@ -14,6 +14,7 @@ import { Roles } from 'src/auth/decorators/roles.decorator';
 export class ProductController {
     constructor(private readonly productoService: ProductService) {}
 
+    //👇 Devuelve los productos totales de la base de datos
     @Get()
     async getProducto(@Res() response): Promise<Products[]> {
         try {
@@ -26,6 +27,20 @@ export class ProductController {
         }
     }
 
+    // @UseGuards(AuthGuard, RolesGuard)
+    // @Roles('Emprendedor')
+    @Get('byEmprendimiento/:id')
+    async getProductsByEmprendimiento(@Res() response, @Param("id") id: number ) {
+        try {
+            const responseFromService = await this.productoService.getProductsByEmprendimientoId(id);
+
+            if(responseFromService) return response.status(HttpStatus.OK).json(responseFromService)
+        } catch (err) {
+            return response.status(HttpStatus.NOT_FOUND).json({error: err})
+        }
+    }
+
+    //👇 Devuelve las categorías
     @Get('/categorias')
     async getCategorias(@Res() response): Promise<Category[]> {
         try {

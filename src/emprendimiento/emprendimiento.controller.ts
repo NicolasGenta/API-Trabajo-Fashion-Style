@@ -39,12 +39,14 @@ export class EmprendimientoController {
 
     @UseGuards(AuthGuard, RolesGuard)
     @Roles('Emprendedor')
-    @Get("/:id")
-    async getEmprendimientoById(@Res() response, @Param("id") id :number){
-        try{
-            const responseFromService = await this.emprendimientoService.getEmprendimientoById(id);
+    @Get('byUser/:id')
+    async getEmprendimientoByUserId(@Res() response, @Param("id") id: number) {
+        console.log(id);
+        
+        try {
+            const responseFromService = await this.emprendimientoService.getEmprendimientoByUserId(id);
             if(responseFromService) return response.status(HttpStatus.OK).json(responseFromService);
-        }catch (err){
+        } catch (err) {
             return response.status(HttpStatus.NOT_FOUND).json({message: `${err}`})
         }
     }

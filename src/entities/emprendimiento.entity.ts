@@ -13,9 +13,9 @@ export class Emprendimiento {
     @Column()
     razon_social :string;
 
-    @JoinColumn({name: 'rubro_id'})
-    @ManyToOne(type => Rubro, rubro => rubro.emprendimientos)
-    rubro_id : Rubro
+    @ManyToOne(() => Rubro, rubro => rubro.emprendimientos)
+    @JoinColumn({ name: 'rubro_id' }) // JoinColumn aquí para la clave foránea
+    rubro: Rubro; // Cambié rubro_id a rubro
 
     @OneToMany(type => Products, producto => producto.emprendimiento)
     products : Products [];
