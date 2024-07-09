@@ -7,23 +7,23 @@ export class MailService {
 
   constructor() {
     this.transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com', // Cambia esto por tu proveedor SMTP
+      host: 'smtp.gmail.com',
       port: 465,
-      secure: true, // true para 465, false para otros puertos
+      secure: true,
       auth: {
-        user: 'emprende.dev11@gmail.com', // tu correo electrónico
-        pass: 'vcsb iwgq apev lavh', // tu contraseña
+        user: 'emprende.dev11@gmail.com',
+        pass: 'vcsb iwgq apev lavh',
       },
     });
   }
 
-  async sendMail(to: string, subject: string, text: string) {
+  async sendMail(to: string, from: string, subject: string, text: string) {
     const mailOptions = {
-      from: 'emprende.dev11@gmail.com',
+      from: `Emprende <emprende.dev11@gmail.com>`,
+      replyTo: from,
       to,
       subject,
-      text,
-
+      text
     };
 
     try {

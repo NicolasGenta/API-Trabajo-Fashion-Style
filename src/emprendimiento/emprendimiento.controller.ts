@@ -64,17 +64,11 @@ export class EmprendimientoController {
     }
     
     @Post('/send-email')
-    async sendEmail(
-      @Res() response,
-      @Body() sendMailDto: { to: string; subject: string; text: string },
-    ) {
-      try {
-        await this.mailService.sendMail(sendMailDto.to, sendMailDto.subject, sendMailDto.text);
-        return response.status(HttpStatus.OK).json({ message: 'Correo enviado con éxito' });
-      } catch (error) {
-        return response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ error: `Error al enviar el correo: ${error.message}` });
-      }
-    
+    async sendEmail(@Body() body: { to: string; from: string; subject: string; text: string }) {
+        const { to, from, subject, text } = body;
+        await this.mailService.sendMail(to, from, subject, text);
+        return { message: 'Correo enviado con éxito' };
+      
   }
 
 }

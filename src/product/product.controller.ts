@@ -116,4 +116,9 @@ export class ProductController {
             res.status(HttpStatus.NOT_FOUND).json({ error: `No se pudo encontrar el producto` });
         }
     }
+
+   // @Get('most-purchased')
+  //  async getMostPurchasedProducts(): Promise<Products[]> {
+   //     return this.productoService.getMostPurchasedProducts();
+   // }
 }

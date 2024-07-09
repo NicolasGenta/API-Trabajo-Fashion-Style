@@ -17,10 +17,10 @@ export class Products {
     @Column({type: "double"})
     precio: number;
 
-    @Column({type: "tinyint"})
+    @Column({type: "tinyint" })
     mas_comprado : number;
 
-    @Column({type: "tinyint"})
+    @Column({type: "tinyint" })
     descuento : number;
 
     @Column()
