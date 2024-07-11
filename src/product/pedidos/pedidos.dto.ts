@@ -1,7 +1,11 @@
+// pedidos.dto.ts
 import { IsInt, IsString, IsArray, ValidateNested, IsNumber } from 'class-validator';
 import { Type } from 'class-transformer';
 
-class ProductoDto {
+class DetalleCompraDto {
+  @IsInt()
+  emprendimiento_id: number;
+
   @IsInt()
   codigo_producto: number;
 
@@ -9,10 +13,7 @@ class ProductoDto {
   cantidad: number;
 
   @IsNumber()
-  precio_total: number;
-
-  @IsInt()
-  emprendimiento_id: number;
+  precio_total: number; 
 }
 
 export class CreatePedidoDto {
@@ -22,11 +23,12 @@ export class CreatePedidoDto {
   @IsString()
   fecha_de_pedido: string;
 
-  @IsString()
-  timestamp: string;
+  @IsInt()
+  timestamp: number;
 
   @IsArray()
   @ValidateNested({ each: true })
-  @Type(() => ProductoDto)
-  detalle_compra: ProductoDto[];
+  @Type(() => DetalleCompraDto)
+  detalle_compra: DetalleCompraDto[];
 }
+
