@@ -10,7 +10,9 @@ import { EmprendimientoModule } from './emprendimiento/emprendimiento.module';
 import { AuthModule } from './auth/auth.module';
 import { ImageModule } from './image/image.module';
 import { MailModule } from './mail/mail.module';
-import { PedidosModule } from './product/pedidos/pedidos.module';
+import { EstadoModule } from './product/pedidos/modulos/estado.module';
+import { ClienteModule } from './product/pedidos/modulos/cliente.module';
+import { PedidoModule } from './product/pedidos/modulos/pedidos.module';
 
 @Module({
   imports: [ServeStaticModule.forRoot({rootPath: join(__dirname,'..','client')}), 
@@ -30,7 +32,9 @@ EmprendimientoModule,
 AuthModule,
 ImageModule,
 MailModule,
-PedidosModule
+EstadoModule,
+ClienteModule,
+PedidoModule,
 ],
   controllers: [AppController],
   providers: [AppService],
