@@ -13,9 +13,11 @@ import { Estado } from 'src/entities/estado.entity';
 import { Cliente } from 'src/entities/cliente.entity';
 import { Pedido } from 'src/entities/pedido.entity';
 import { Pedido_detalle } from 'src/entities/pedido_detalle.entity';
+import { ImageService } from 'src/image/image.service';
+import { ImageModule } from 'src/image/image.module';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Products, Category, Emprendimiento, Rubro, Usuario,
+    imports: [ImageModule, TypeOrmModule.forFeature([Products, Category, Emprendimiento, Rubro, Usuario,
     Cliente, Estado, Pedido, Pedido_detalle])],
     providers: [ProductService, PedidosService],
     controllers: [ProductController, PedidosController]

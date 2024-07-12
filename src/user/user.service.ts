@@ -40,7 +40,8 @@ export class UserService {
                 .getOne();
             
             if (!result) throw new Error('User not found')
-
+                console.log(result);
+                
             return result;
         } catch (err) {
             throw new Error(err.message)
@@ -58,11 +59,19 @@ export class UserService {
                     'p.persona_id as persona_id',
                     'p.first_name as first_name',
                     'p.last_name as last_name',
+                    'p.documento as documento',
+                    'p.telefono as telefono',
+                    'p.calle as calle',
+                    'p.nro as nro',
+                    'p.calle_1 as calle_1',
+                    'p.calle_2 as calle_2'
                 ])
                 .innerJoin(Persona, 'p', 'p.persona_id = u.persona_id')
                 .innerJoin(Rol, 'rl', 'u.rol_id = rl.rol_id')
                 .andWhere('u.usuario_id = :id', { id })
                 .getRawOne();
+                console.log(result);
+                
                 
             return result;
         } catch (err) {
@@ -121,6 +130,38 @@ export class UserService {
             console.log(error);
 
             throw new Error('No se pudo generar el hash')
+        }
+    }
+
+    async updateUser(id :number, user :any) {
+        console.log(id, user);
+        
+        try {
+            const { firstName, lastName, documento, email, telefono, calle, nro, calle_1, calle_2 } = user;
+
+            await this.userRepository.manager.transaction(async (manager) => {
+                const userResponse = await this.userRepository.findOne({where: {usuario_id: id}});
+                if(!userResponse) throw new Error ('No existe el usuario');
+                
+                const id_persona = Number(userResponse.persona);
+                
+                const persona = await this.personaRepository.findOne({where: {persona_id: id_persona}});
+
+                if(userResponse.mail !== email) {
+                    Object.assign(userResponse, {mail: email})
+                }
+                
+                Object.assign(persona, {first_name: firstName, last_name: lastName, documento, email, telefono, calle, nro, calle_1, calle_2});
+                
+
+                await this.personaRepository.save(persona);
+                await this.userRepository.save(userResponse)
+            })
+            
+            return user;
+        } catch (error) {
+            console.log(error);
+            
         }
     }
 }

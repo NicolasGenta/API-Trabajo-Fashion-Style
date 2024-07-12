@@ -2,9 +2,9 @@ import { IsBoolean, IsNumber , IsString} from "class-validator";
 
 export class emprendimientoUdpatedDto {
     @IsNumber()
-    id :number;
+    id: number;
     @IsString()
     nombre :string;
     @IsNumber()
-    estado :number;
+    estado_id :number;
 }

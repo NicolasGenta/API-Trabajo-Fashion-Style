@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post, Body, Res, HttpStatus, Delete, Put, Query, UseGuards } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Res, HttpStatus, Delete, Put, Query, UseGuards, UseInterceptors, UploadedFile } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { producDto } from './producto.dto';
 import { Products } from '../entities/product.entity';
@@ -7,6 +7,7 @@ import { producUpdateDto } from './productUpdate.dto';
 import { AuthGuard } from 'src/auth/guard/auth.guard';
 import { RolesGuard } from 'src/auth/guard/roles.guard';
 import { Roles } from 'src/auth/decorators/roles.decorator';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 
 
@@ -52,7 +53,8 @@ export class ProductController {
             return response.status(HttpStatus.NOT_FOUND).json({ error: `Error al obtener categorías: ${error.message}` });
         }
     }
-
+    
+    //Obtener el precio mayor
     @Get('/maxPrecio')
     async getMaxPrecio(@Res() response): Promise<number> {
         try {
@@ -64,6 +66,8 @@ export class ProductController {
             return response.status(HttpStatus.NOT_FOUND).json({ error: `Error al obtener categorías: ${error.message}` });
         }
     }
+
+    // Borrar producto
     @UseGuards(AuthGuard, RolesGuard)
     @Roles('Emprendedor')
     @Delete('/:id')
@@ -76,6 +80,7 @@ export class ProductController {
         }
     }
 
+    //Obtener producto por ID
     @Get("/:id")
     async getProductoById(@Res() response, @Param("id") id: number): Promise<Products> {
         try {
@@ -88,14 +93,14 @@ export class ProductController {
         }
     }
 
-    
+    // Crear producto
     @Post()
     @UseGuards(AuthGuard, RolesGuard)
     @Roles('Emprendedor')
-    async crearProducto(@Res() response, @Body() producDto: producDto) {
-        console.log(producDto)
+    @UseInterceptors(FileInterceptor('img'))
+    async crearProducto(@Res() response, @Body() producDto: any, @UploadedFile() img: Express.Multer.File) {
         try {
-            const responseFromService = await this.productoService.crearProducto(producDto);
+            const responseFromService = await this.productoService.crearProducto(producDto, img);
             if (responseFromService) {
                 return response.status(HttpStatus.CREATED).json({ message: 'El recurso ha sido creado con éxito' });
             }
@@ -104,13 +109,14 @@ export class ProductController {
         }
     }
     
-
+    //Actualizar producto
     @Put('/:id')
     @UseGuards(AuthGuard, RolesGuard)
     @Roles('Emprendedor')
-    async putProductos(@Param('id') id: number, @Body() body: producUpdateDto, @Res() res): Promise<void> {
+    @UseInterceptors(FileInterceptor('img'))
+    async putProductos(@Param('id') id: number, @Body() body: any, @UploadedFile() img: Express.Multer.File, @Res() res): Promise<void> {
         try {
-            await this.productoService.putProductos(id, body);
+            await this.productoService.putProductos(id, body, img);
             res.status(HttpStatus.OK).json({ message: 'Producto modificado correctamente' });
         } catch (error) {
             res.status(HttpStatus.NOT_FOUND).json({ error: `No se pudo encontrar el producto` });

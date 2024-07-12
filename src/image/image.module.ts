@@ -13,6 +13,7 @@ import { diskStorage } from 'multer';
     })
   ],
   controllers: [ImageController],
-  providers: [ImageService]
+  providers: [ImageService],
+  exports: [ImageService]
 })
 export class ImageModule {}

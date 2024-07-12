@@ -25,6 +25,18 @@ export class Emprendimiento {
     @Column()
     estado :boolean
 
+    @Column()
+    calle :string
+
+    @Column()
+    nro :number
+
+    @Column()
+    calle_1 :string
+
+    @Column()
+    calle_2 :string
+
     @OneToMany(type => Pedido, pedido => pedido.emprendimiento)
     pedido :Pedido[];
 

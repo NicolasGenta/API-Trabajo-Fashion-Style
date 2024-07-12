@@ -1,4 +1,4 @@
-import {IsString, IsNumber, IsUrl, IsArray, IsBoolean} from 'class-validator'
+import {IsString, IsNumber, IsUrl, IsArray, IsBoolean, IsOptional} from 'class-validator'
 
 export class producDto {
     @IsString()
@@ -7,10 +7,10 @@ export class producDto {
     descripcion: string;
     @IsNumber()
     precio: number;
-    @IsUrl()
-    img: string;
-    @IsString()
-    category: string;
+    @IsOptional()
+    img: any;
+    @IsNumber()
+    category: number;
     @IsNumber()
     emprendimiento: number;
 
