@@ -5,14 +5,18 @@ import { emprendimientoUdpatedDto } from './empUdpate.dto';
 import { AuthGuard } from 'src/auth/guard/auth.guard';
 import { Roles } from 'src/auth/decorators/roles.decorator';
 import { RolesGuard } from 'src/auth/guard/roles.guard';
+import { MailService } from 'src/mail/mail.service';
 import { Response, response } from 'express';
 import { RubroDto } from './dto/rubro.dto';
 import { CategoryDTO } from './dto/categoria.dato';
 
 @Controller('/emprendimiento')
 export class EmprendimientoController {
-
-    constructor(private readonly emprendimientoService: EmprendimientoService){}
+  
+       constructor(
+        private readonly emprendimientoService: EmprendimientoService,
+        private readonly mailService: MailService,
+    ){}
     //👇 GETS
     @Get()
     async getEmprendimientos(@Res() response){
@@ -93,7 +97,14 @@ export class EmprendimientoController {
             return response.status(HttpStatus.NOT_FOUND).json({message: `${err}`})
         }
     }
-
+    
+    @Post('/send-email')
+    async sendEmail(@Body() body: { to: string; from: string; subject: string; text: string }) {
+        const { to, from, subject, text } = body;
+        await this.mailService.sendMail(to, from, subject, text);
+        return { message: 'Correo enviado con éxito' };
+      
+  }
     @UseGuards(AuthGuard, RolesGuard)
     @Roles('Emprendedor')
     @Put('updateData/:id')

@@ -21,5 +21,4 @@ export class Usuario {
 
     @Column()
     mail :string
-
 }

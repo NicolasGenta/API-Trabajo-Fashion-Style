@@ -9,11 +9,10 @@ import { UserModule } from './user/user.module';
 import { EmprendimientoModule } from './emprendimiento/emprendimiento.module';
 import { AuthModule } from './auth/auth.module';
 import { ImageModule } from './image/image.module';
-import { ConfigModule } from '@nestjs/config';
-import { enviroments } from './enviroments';
-import { EventosModule } from './eventos/eventos.module';
-import config from './config';
-
+import { MailModule } from './mail/mail.module';
+import { EstadoModule } from './product/pedidos/modulos/estado.module';
+import { ClienteModule } from './product/pedidos/modulos/cliente.module';
+import { PedidoModule } from './product/pedidos/modulos/pedidos.module';
 
 @Module({
   imports: [ServeStaticModule.forRoot({rootPath: join(__dirname,'..','client')}), 
@@ -21,18 +20,21 @@ import config from './config';
     type: 'mysql',
     host: 'localhost',
     port: 3306,
-    username: 'admin01',
-    password: 'ln40065375',
+    username: 'root',
+    password: 'root',
     database: 'emprende',
     autoLoadEntities: true,
-    
+    synchronize: false
   }),
 ProductModule,
 UserModule,
 EmprendimientoModule,
 AuthModule,
 ImageModule,
-EventosModule
+MailModule,
+EstadoModule,
+ClienteModule,
+PedidoModule,
 ],
   controllers: [AppController],
   providers: [AppService],

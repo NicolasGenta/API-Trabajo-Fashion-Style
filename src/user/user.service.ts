@@ -118,7 +118,7 @@ export class UserService {
         userExists.password = password;
 
         await this.userRepository.save(userExists)
-        return 'Cambio de conteseña existoso'
+        return 'Cambio de contraseña existoso'
     }
 
     async generateHash(password: string): Promise<string> {

@@ -2,16 +2,22 @@ import { CanActivate, ExecutionContext, Injectable, UnauthorizedException } from
 import { JwtService } from "@nestjs/jwt";
 import { jwtConstants } from "./constants/jwt.constants";
 import { Request } from "express";
+import { Reflector } from "@nestjs/core";
 
 
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-    constructor(private jwtService: JwtService) { }
+    constructor(private reflector: Reflector, private jwtService: JwtService) { }
 
     async canActivate(context: ExecutionContext): Promise<boolean> {
+        const roles = this.reflector.get<string[]>('roles', context.getHandler());
+        if (!roles) {
+          return true; // No se ha definido ningún rol, permitir acceso
+        }
         const request = context.switchToHttp().getRequest();
         const token = this.extractTokenFromHeader(request);
+        
         if (!token) {
             throw new UnauthorizedException();
         }

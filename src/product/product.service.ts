@@ -187,5 +187,8 @@ export class ProductService {
             throw new Error(`No se pudo eliminar el recurso: ${err.message}`);
         }
     }
-
+     
+   // async getMostPurchasedProducts(): Promise<Products[]> {
+   //     return this.productRepository.find({ where: { mas_comprado: 1 } });
+   // }
 }
