@@ -8,9 +8,10 @@ import { Usuario } from 'src/entities/usuario.entity';
 import { MailService } from 'src/mail/mail.service';
 import { Rubro } from 'src/entities/rubro.entity';
 import { Category } from 'src/entities/category.entity';
+import { MailModule } from 'src/mail/mail.module';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Products, Emprendimiento, Usuario, Rubro, Category])],
+    imports: [TypeOrmModule.forFeature([Products, Emprendimiento, Usuario, Rubro, Category]), MailModule],
     controllers: [EmprendimientoController],
     providers: [EmprendimientoService, MailService]
 })

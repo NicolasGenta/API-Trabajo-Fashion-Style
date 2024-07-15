@@ -62,7 +62,8 @@ export class EmprendimientoController {
             return response.status(HttpStatus.NOT_FOUND).json({message: error})
         }
     }
-
+    @UseGuards(AuthGuard, RolesGuard)
+    @Roles('Administrador')
     @Post('/rubros')
     async crearRubros(@Res() response :Response, @Body() rubro :RubroDto) {
         try {
@@ -75,7 +76,7 @@ export class EmprendimientoController {
         }
     }
 
-    @Post('/categorias/nuevaCategoria')
+    @Post('/categorias')
     async crearCategoria(@Res() response :Response, @Body() categoria :CategoryDTO) {
         try {
             const responseFromService = await this.emprendimientoService.crearCategoria(categoria);
@@ -102,9 +103,9 @@ export class EmprendimientoController {
     async sendEmail(@Body() body: { to: string; from: string; subject: string; text: string }) {
         const { to, from, subject, text } = body;
         await this.mailService.sendMail(to, from, subject, text);
-        return { message: 'Correo enviado con éxito' };
-      
-  }
+        return { message: 'Correo enviado con éxito' };    
+    }
+    
     @UseGuards(AuthGuard, RolesGuard)
     @Roles('Emprendedor')
     @Put('updateData/:id')

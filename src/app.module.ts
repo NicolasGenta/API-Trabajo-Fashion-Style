@@ -13,6 +13,7 @@ import { MailModule } from './mail/mail.module';
 import { EstadoModule } from './product/pedidos/modulos/estado.module';
 import { ClienteModule } from './product/pedidos/modulos/cliente.module';
 import { PedidoModule } from './product/pedidos/modulos/pedidos.module';
+import { MessagesModule } from './messages/messages.module';
 
 @Module({
   imports: [ServeStaticModule.forRoot({rootPath: join(__dirname,'..','client')}), 
@@ -20,8 +21,8 @@ import { PedidoModule } from './product/pedidos/modulos/pedidos.module';
     type: 'mysql',
     host: 'localhost',
     port: 3306,
-    username: 'root',
-    password: 'root',
+    username: 'admin01',
+    password: 'ln40065375',
     database: 'emprende',
     autoLoadEntities: true,
     synchronize: false
@@ -35,6 +36,7 @@ MailModule,
 EstadoModule,
 ClienteModule,
 PedidoModule,
+MessagesModule,
 ],
   controllers: [AppController],
   providers: [AppService],

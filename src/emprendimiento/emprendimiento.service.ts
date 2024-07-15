@@ -9,6 +9,8 @@ import { Usuario } from 'src/entities/usuario.entity';
 import { RubroDto } from './dto/rubro.dto';
 import { CategoryDTO } from './dto/categoria.dato';
 import { Category } from 'src/entities/category.entity';
+import { MailService } from 'src/mail/mail.service';
+import { createEstadoMail } from 'src/mail/templates/templates';
 
 @Injectable()
 export class EmprendimientoService {
@@ -24,6 +26,7 @@ export class EmprendimientoService {
         private readonly usuarioRepository: Repository<Usuario>,
         @InjectRepository(Category)
         private readonly categoryRepository: Repository<Category>,
+        private mailService: MailService
     ) { }
 
     async getEmprendimientos() {
@@ -38,7 +41,10 @@ export class EmprendimientoService {
                     'r.rubro_id as rubro_id',
                     'r.nombre_rubro as rubro',
                     'concat(p.last_name, " ", p.first_name) as responsable',
-                    'p.documento as documento'
+                    'p.documento as documento',
+                    'concat(e.calle, " ", e.nro, " entre ", e.calle_1, " y ", e.calle_2) as direccion',
+                    'p.telefono as telefono_responsable',
+                    'p.email as email'
                 ])
                 .innerJoin('e.rubro', 'r')
                 .innerJoin('e.usuario', 'u')
@@ -167,17 +173,36 @@ export class EmprendimientoService {
     }
 
     //👇 UPDATE
-    async updateEmprendimientoStatus(emprendimiento: emprendimientoUdpatedDto) {
+    async updateEmprendimientoStatus(emprendimiento: emprendimientoUdpatedDto): Promise<string> {
         try {
             const { id, estado_id } = emprendimiento;
-            const emprendimientoExistente = await this.emprendimientoRespository.findOne({ where: { emprendimiento_id: id } })
+            const emprendimientoExistente = await this.emprendimientoRespository
+            .createQueryBuilder('e')
+            .select([
+                'e.emprendimiento_id as emprendimiento_id',
+                'e.razon_social as emprendimiento',
+                'e.estado as estado',
+                'concat(p.last_name, " ", p.first_name) as responsable',
+                'u.mail as mail',
+
+            ])
+            .innerJoin('e.usuario', 'u')
+            .innerJoin('u.persona', 'p')
+            .where('e.emprendimiento_id = :id', {id})
+            .getRawOne();
+            
             if (!emprendimientoExistente) throw new NotFoundException(`No se encontró un producto con el id ${id}`)
             if (emprendimientoExistente.estado !== Boolean(estado_id)) {
                 emprendimientoExistente.estado = Boolean(estado_id);
                 await this.emprendimientoRespository.save(emprendimientoExistente);
             }
             else throw new NotFoundException(`El emprendimiento ya tiene ese estado asignado`)
-            return emprendimientoExistente;
+            if(estado_id === 0) {
+                const message = createEstadoMail(emprendimientoExistente.responsable, emprendimientoExistente.emprendimiento, 'Inactivo')
+                this.mailService.sendEmailWithBody(emprendimientoExistente.mail, 'Notificación de EMPRENDE', message)
+            }
+
+            return 'Estado actualizado correctamente';
         } catch (err) {
             console.log(err);
 
@@ -190,6 +215,7 @@ export class EmprendimientoService {
             const { razon_social, rubro_id, estado, calle, nro, calle_1, calle_2 } = emprendimiento;
 
             const emprendimientoExistente = await this.emprendimientoRespository.findOne({ where: { emprendimiento_id: id } });
+
             if (!emprendimientoExistente) throw new NotFoundException(`No se encontró un emprendimiento con el id ${id}`)
             const rubro = await this.rubroRepository.findOne({ where: { rubro_id: rubro_id } })
             Object.assign(emprendimientoExistente, { razon_social: razon_social, rubro: rubro, estado, calle, nro, calle_1, calle_2 });
@@ -203,7 +229,7 @@ export class EmprendimientoService {
         }
     }
 
-    async crearRubro(rubro: RubroDto) {
+    async crearRubro(rubro: RubroDto) : Promise <string> {
         try {
             const { nombre_rubro } = rubro;
 
@@ -212,26 +238,22 @@ export class EmprendimientoService {
             })
             await this.rubroRepository.save(rubro);
 
-            return nombre_rubro;
+            return "Rubro creado correctamente";
         } catch (error) {
 
         }
     }
 
-    async crearCategoria(categoria: CategoryDTO) {
+    async crearCategoria(categoria: CategoryDTO): Promise<string> {
         try {
-            const {nombre_categoria} = categoria;
-
+            const { nombre_categoria } = categoria;
             categoria = this.categoryRepository.create({
                 nombre_categoria: nombre_categoria
             });
-
             await this.categoryRepository.save(categoria)
-
-            return categoria
+            return "Categoria creada correctamente";
         } catch (error) {
             console.log(error);
-            
         }
     }
 }

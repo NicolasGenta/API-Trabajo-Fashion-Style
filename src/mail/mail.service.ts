@@ -34,4 +34,21 @@ export class MailService {
       throw new Error(`Error al enviar el correo: ${error.message}`);
     }
   }
+
+  async sendEmailWithBody (to: string, subject: string, body) {
+    const mailOptions = {
+      from: `Emprende <emprende.dev11@gmail.com>`,
+      to,
+      subject,
+      html: body
+    };
+
+    try {
+      await this.transporter.sendMail(mailOptions);
+      console.log('Correo enviado con éxito');
+    } catch (error) {
+      console.error('Error al enviar correo:', error);
+      throw new Error(`Error al enviar el correo: ${error.message}`);
+    }
+  }
 }

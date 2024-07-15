@@ -21,7 +21,6 @@ export class Emprendimiento {
     products : Products [];
 
     @OneToOne(type => Usuario, usuario => usuario.usuario_id)
-
     @JoinColumn({name: 'usuario_id'})
     usuario :Usuario
 
@@ -42,6 +41,4 @@ export class Emprendimiento {
 
     @OneToMany(type => Pedido, pedido => pedido.emprendimiento)
     pedido :Pedido[];
-
-  
 }
