@@ -21,8 +21,8 @@ import { MessagesModule } from './messages/messages.module';
     type: 'mysql',
     host: 'localhost',
     port: 3306,
-    username: 'admin01',
-    password: 'ln40065375',
+    username: 'root',
+    password: 'root',
     database: 'emprende',
     autoLoadEntities: true,
     synchronize: true
