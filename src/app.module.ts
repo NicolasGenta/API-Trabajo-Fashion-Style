@@ -19,7 +19,8 @@ import { AuthModule } from './auth/auth.module';
     username: 'root',
     password: 'root',
     database: 'emprende',
-    autoLoadEntities: true
+    autoLoadEntities: true,
+    synchronize: true
   }),
 ProductModule,
 UserModule,
