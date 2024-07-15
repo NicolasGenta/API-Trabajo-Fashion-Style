@@ -12,4 +12,24 @@ export class Persona {
     @Column()
     first_name :string;
 
+    @Column()
+    documento :number;
+
+    @Column()
+    telefono :number;
+
+    @Column()
+    email :string;
+
+    @Column()
+    calle :string;
+
+    @Column()
+    nro :number;
+
+    @Column()
+    calle_1 :string;
+
+    @Column()
+    calle_2 :string;
 }

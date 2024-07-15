@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Emprendimiento } from "./emprendimiento.entity";
 
 @Entity('rubro')
@@ -9,7 +9,7 @@ export class Rubro {
     @Column()
     nombre_rubro :string;
 
-    @ManyToOne(type => Emprendimiento, emprendimiento => emprendimiento.rubro_id)
+    @OneToMany(type => Emprendimiento, emprendimiento => emprendimiento.rubro)
     emprendimientos :Emprendimiento[];
     
 }

@@ -1,17 +1,22 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn, OneToOne, JoinColumn} from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn, OneToOne, JoinColumn, ManyToOne} from "typeorm";
 import { Rubro } from "./rubro.entity";
 import { Products } from "./product.entity";
 import { Usuario } from "./usuario.entity";
 import { Pedido } from "./pedido.entity";
+import { IsEmail } from "class-validator";
 
 @Entity('emprendimiento')
 export class Emprendimiento {
     @PrimaryGeneratedColumn()
     emprendimiento_id :number;
+
     @Column()
     razon_social :string;
-    @OneToMany(type => Rubro, rubro => rubro.emprendimientos)
-    rubro_id : Rubro
+
+    @ManyToOne(() => Rubro, rubro => rubro.emprendimientos)
+    @JoinColumn({ name: 'rubro_id' }) // JoinColumn aquí para la clave foránea
+    rubro: Rubro; // Cambié rubro_id a rubro
+
     @OneToMany(type => Products, producto => producto.emprendimiento)
     products : Products [];
 
@@ -21,6 +26,18 @@ export class Emprendimiento {
 
     @Column()
     estado :boolean
+
+    @Column()
+    calle :string
+
+    @Column()
+    nro :number
+
+    @Column()
+    calle_1 :string
+
+    @Column()
+    calle_2 :string
 
     @OneToMany(type => Pedido, pedido => pedido.emprendimiento)
     pedido :Pedido[];
