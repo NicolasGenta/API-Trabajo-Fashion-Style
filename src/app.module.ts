@@ -19,11 +19,11 @@ import { MessagesModule } from './messages/messages.module';
   imports: [ServeStaticModule.forRoot({rootPath: join(__dirname,'..','client')}), 
   TypeOrmModule.forRoot({
     type: 'mysql',
-    host: 'localhost',
+    host: 'bxk9dol92pmyulorp5q5-mysql.services.clever-cloud.com',
     port: 3306,
-    username: 'root',
-    password: 'root',
-    database: 'emprende',
+    username: 'ura7wnlrdbuq5gf2',
+    password: 'FYbzxHlD7mti4s9p9x0g',
+    database: 'bxk9dol92pmyulorp5q5',
     autoLoadEntities: true,
     synchronize: true
   }),
