@@ -7,13 +7,13 @@ export class PedidosController {
   constructor(private readonly pedidosService: PedidosService) {}
 
   @Post()
-  generarPedidos(@Body() input: CreatePedidoDto) {
+  generarPedidos(@Body() input) {
     return this.pedidosService.generarPedidos(input);
   }
 
-  @Get('cliente/:id')
-  getPedidoByCliente(@Param('id') id: number) {
-    return this.pedidosService.getPedidoByCliente(id);
+  @Get('usuario/:id')
+  getPedidoByUser(@Param('id') id: number) {
+    return this.pedidosService.getPedidoByUser(id);
   }
 
   @Get('emprendimiento/:id')

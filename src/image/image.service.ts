@@ -7,12 +7,16 @@ import { v4 as uuidv4 } from 'uuid';
 export class ImageService {
 
     uploadImage(img) {
-        const folderPath = 'C:\\Users\\Luce\\Documents\\Develop\\Projects\\API-Trabajo-Fashion-Style\\img';
+        const folderPath = path.join(__dirname, "img")
         const fileId = uuidv4();
         const fileName = `${fileId}.jpg`
         const filePath = path.join(folderPath, fileName);
 
         try {
+            if (!fs.existsSync(folderPath)) {
+                fs.mkdirSync(folderPath, { recursive: true });
+            }
+            
             fs.writeFileSync(filePath, img.buffer);
 
             return fileName;
@@ -23,7 +27,8 @@ export class ImageService {
     }
 
     deleteImage(name: string) {
-        const folderPath = 'C:\\Users\\Luce\\Documents\\Develop\\Projects\\API-Trabajo-Fashion-Style\\img';
+        const folderPath = path.join(__dirname, "img");
+
         const filePath = path.join(folderPath, name);
 
         try {

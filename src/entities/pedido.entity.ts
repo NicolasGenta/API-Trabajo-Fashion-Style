@@ -21,7 +21,7 @@ export class Pedido {
     @JoinColumn({ name: 'emprendimiento_id' })
     emprendimiento: Emprendimiento;
 
-    @Column()
+    @Column({type: 'date'})
     fecha_pedido :string;
 
     @OneToMany(type => Pedido_detalle, pedido_detalle => pedido_detalle.pedido)
