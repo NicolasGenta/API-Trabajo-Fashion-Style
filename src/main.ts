@@ -10,7 +10,7 @@ async function bootstrap() {
   }),
   );
   app.enableCors({
-    origin: 'http://localhost:5173',
+    origin: 'https://emprende-aa122.web.app/',
     methods: 'GET, PUT, POST, DELETE',
     allowedHeaders: 'Content-Type, Authorization'
   })

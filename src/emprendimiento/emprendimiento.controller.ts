@@ -76,6 +76,8 @@ export class EmprendimientoController {
         }
     }
 
+    @UseGuards(AuthGuard, RolesGuard)
+    @Roles('Administrador')
     @Post('/categorias')
     async crearCategoria(@Res() response :Response, @Body() categoria :CategoryDTO) {
         try {
