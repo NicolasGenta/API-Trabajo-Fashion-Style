@@ -10,7 +10,7 @@ export class AuthController {
 
     @Post('login')
     async signIn(@Body() userDto: Record<string, any>, @Res() response : Response): Promise<any> {
-        response.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173')
+        response.setHeader('Access-Control-Allow-Origin', 'https://emprende-aa122.web.app')
         try {
             const responseService = await this.authService.signIn(userDto.username, userDto.password);
 
