@@ -16,7 +16,7 @@ export class ImageService {
             if (!fs.existsSync(folderPath)) {
                 fs.mkdirSync(folderPath, { recursive: true });
             }
-            
+
             fs.writeFileSync(filePath, img.buffer);
 
             return fileName;

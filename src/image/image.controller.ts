@@ -21,9 +21,7 @@ export class ImageController {
 
     @Get()
     async getImage(@Query('filename') filename: string, @Res() res: Response) {
-        console.log(filename);
-        
-        const basePath = 'C:\\Users\\Luce\\Documents\\Develop\\Projects\\API-Trabajo-Fashion-Style\\img';
+        const basePath = path.join(__dirname, "img");
         const imagePath = path.join(basePath, filename);
         if (await fs.existsSync(imagePath)) {
             res.sendFile(imagePath);
