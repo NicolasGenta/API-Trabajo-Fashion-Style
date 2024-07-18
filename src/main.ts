@@ -15,7 +15,7 @@ async function bootstrap() {
   app.enableCors({
     origin: 'https://emprende-aa122.web.app',
     methods: 'GET, PUT, POST, DELETE'
-  })
+  });
   // app.use(cookieParser())
   await app.listen(8080);
 }
