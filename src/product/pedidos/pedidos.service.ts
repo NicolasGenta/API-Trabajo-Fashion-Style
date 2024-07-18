@@ -8,6 +8,7 @@ import { Emprendimiento } from 'src/entities/emprendimiento.entity';
 import { Products } from 'src/entities/product.entity';
 import { Pedido_detalle } from 'src/entities/pedido_detalle.entity';
 import { Usuario } from 'src/entities/usuario.entity';
+import { Persona } from 'src/entities/persona.entity';
 
 @Injectable()
 export class PedidosService {
@@ -24,6 +25,8 @@ export class PedidosService {
     private readonly emprendimientoRepository : Repository<Emprendimiento>,
     @InjectRepository(Products)
     private readonly productosRepository : Repository<Products>,
+    @InjectRepository(Persona)
+    private readonly personaRepository : Repository<Persona>,
     @InjectRepository(Pedido_detalle)
     private readonly pedidoDetalleRepository : Repository<Pedido_detalle>
   ) {}
@@ -139,9 +142,25 @@ export class PedidosService {
     return this.getPedidosByField('em.emprendimiento_id', id);
   }
 
-  generarPedidos(input: any) {
+  async generarPedidos(input: any) {
     try {
-      const {email, documento, fechaPedido, timestamp, detalle_compra} = input;
+      const {apellido, nombre, email, documento, telefono, calle, nro, fechaPedido, timestamp, detalle_compra} = input;
+
+      const user = await this.usuarioRepository.findOne({where: {mail: email}})
+      let persona;
+      if(!user) {
+        const personaData = {
+          last_name: apellido,
+          first_name: nombre,
+          documento: documento,
+          telefono: telefono,
+          email: email,
+          calle: calle,
+          nro: nro
+        }
+
+        const persona = this.personaRepository.save(personaData);
+      }
 
       const agrupadosPorEmprendimiento = detalle_compra.reduce((acc, producto) => {
         const { emprendimiento } = producto;
@@ -156,7 +175,7 @@ export class PedidosService {
       
       Object.keys(agrupadosPorEmprendimiento).map(async(emprendimiento_id) => {
         
-        const cliente = await this.clienteRepository.findOne({where: {cliente_id: 1}})
+        const cliente = await this.clienteRepository.findOne({where: {user: user}})
         const emprendimiento = await this.emprendimientoRepository.findOne({where: {emprendimiento_id : Number(emprendimiento_id)}})
         
         const pedido = {

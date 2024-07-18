@@ -9,11 +9,12 @@ import { PedidosService } from '../pedidos.service';
 import { Products } from 'src/entities/product.entity';
 import { Emprendimiento } from 'src/entities/emprendimiento.entity';
 import { Usuario } from 'src/entities/usuario.entity';
+import { Persona } from 'src/entities/persona.entity';
 
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Pedido, Pedido_detalle, Products, Emprendimiento, Usuario]),
+    TypeOrmModule.forFeature([Pedido, Pedido_detalle, Products, Emprendimiento, Usuario, Persona]),
     EstadoModule,
     ClienteModule,
   ],

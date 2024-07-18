@@ -27,6 +27,8 @@ export class UserService {
         private readonly rolRepository: Repository<Rol>,
         @InjectRepository(Persona)
         private readonly personaRepository: Repository<Persona>,
+        @InjectRepository(Cliente)
+        private readonly clienteRepository: Repository<Cliente>,
         private readonly entityManager: EntityManager
     ) { }
 
@@ -99,7 +101,11 @@ export class UserService {
             nuevoUsuario.password = await this.generateHash(password);
             nuevoUsuario.rol_id = rol;
             nuevoUsuario.persona = persona;
-            await this.userRepository.save(nuevoUsuario);
+            const usuario = await this.userRepository.save(nuevoUsuario);
+
+            if(type === 'Client'){
+                await this.clienteRepository.save({user: usuario})
+            }
 
             return nuevoUsuario
         } catch (err) {
