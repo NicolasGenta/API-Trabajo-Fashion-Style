@@ -12,6 +12,7 @@ async function bootstrap() {
     whitelist: true,
   }),
   );
+  
   app.enableCors({
     origin: 'https://emprende-aa122.web.app',
     methods: 'GET, PUT, POST, DELETE'
