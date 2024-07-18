@@ -103,7 +103,7 @@ export class UserService {
             nuevoUsuario.persona = persona;
             const usuario = await this.userRepository.save(nuevoUsuario);
 
-            if(type === 'Client'){
+            if(type === 'Cliente'){
                 await this.clienteRepository.save({user: usuario})
             }
 
