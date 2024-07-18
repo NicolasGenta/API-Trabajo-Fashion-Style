@@ -15,7 +15,6 @@ export class ImageController {
         if (!file) {
             return response.status(400).json({ message: 'No file uploaded' });
         }
-        console.log(file); // Aquí tienes acceso al archivo subido
         return response.status(200).json({ message: 'File uploaded successfully', filename: file.filename });
     }
 
