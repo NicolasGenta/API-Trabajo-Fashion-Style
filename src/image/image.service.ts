@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 export class ImageService {
 
     uploadImage(img) {
-        const folderPath = path.join(__dirname, "img")
+        const folderPath = path.join(__dirname, '..', 'uploads');
         const fileId = uuidv4();
         const fileName = `${fileId}.jpg`
         const filePath = path.join(folderPath, fileName);
@@ -27,7 +27,7 @@ export class ImageService {
     }
 
     deleteImage(name: string) {
-        const folderPath = path.join(__dirname, "img");
+        const folderPath = path.join(__dirname, '..', 'uploads');
 
         const filePath = path.join(folderPath, name);
 

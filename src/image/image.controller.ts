@@ -21,7 +21,7 @@ export class ImageController {
 
     @Get()
     async getImage(@Query('filename') filename: string, @Res() res: Response) {
-        const basePath = path.join(__dirname, "img");
+        const basePath = path.join(__dirname, '..', 'uploads');
         const imagePath = path.join(basePath, filename);
         if (await fs.existsSync(imagePath)) {
             res.sendFile(imagePath);
