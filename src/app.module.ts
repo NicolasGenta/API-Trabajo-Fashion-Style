@@ -25,7 +25,7 @@ import { MessagesModule } from './messages/messages.module';
     password: 'FYbzxHlD7mti4s9p9x0g',
     database: 'bxk9dol92pmyulorp5q5',
     autoLoadEntities: true,
-    synchronize: false
+    synchronize: true
   }),
 ProductModule,
 UserModule,
